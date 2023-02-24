@@ -3,7 +3,7 @@
 
 
 <template>
-    <nav class="h-16 flex items-center justify-between bg-transparent text-orange-200 font-bold">
+    <nav class="h-16 mb-8 md:mb-12 flex items-center justify-between bg-transparent text-orange-200 font-bold">
         <!-- LOGO -->
         <!-- <p class="font-extrabold text-xl text-orange-200 cursor-pointer">Proj</p> -->
         

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-72 h-72 rounded-xl bg-black bg-opacity-20">
+    <div class="text-3xl text-gray-200">
         Account
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-3xl">Dashboard</h1>
+    <div class="text-3xl text-gray-200">Dashboard</div>
 </template>
 
 

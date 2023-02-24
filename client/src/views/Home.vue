@@ -1,9 +1,5 @@
 <template>
-  <body
-    class="h-screen px-12 mt-12 bg-gradient-to-b from-slate-700 to-slate-900"
-  >
-    <project-list />
-  </body>
+  <div class="text-3xl text-gray-200">Home</div>
 </template>
 
 

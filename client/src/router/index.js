@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Dashbaord from '../views/Dashboard.vue';
 import Projects from '../views/Projects.vue';
+import Project from '../views/Project.vue';
 import Account from '../views/Account.vue';
 
 const routes = [
@@ -14,6 +15,12 @@ const routes = [
         path: '/projects',
         name: 'projects',
         component: Projects
+    },
+    {
+        path: '/project/:id',
+        name: 'project',
+        props: true,
+        component: Project
     },
     {
         path: '/dashboard',
