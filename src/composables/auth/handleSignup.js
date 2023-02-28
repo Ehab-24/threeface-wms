@@ -8,10 +8,13 @@ const handleSignup = async (e, router) => {
   const { email, password, confirmPassword } = e.target.elements;
 
   try {
+
+    if (!email.value || !password.value || !confirmPassword.value) {
+      throw new Error("Please enter all fields. 😠");
+    }
+
     if (password.value !== confirmPassword.value) {
-      const error = new Error("Passwords do not match.");
-      error.code = "custom/unmatched-passwords";
-      throw error;
+      throw new Error("Passwords do not match. 🧬");
     }
 
     const userCredential = await createUserWithEmailAndPassword(
@@ -33,9 +36,6 @@ const handleSignup = async (e, router) => {
     const errorCode = error.code;
 
     switch (errorCode) {
-      case "custom/unmatched-passwords":
-        alert("Passwords do not match. Please try again.");
-        break;
       case "auth/email-already-in-use":
         alert("Email already in use. Please try again.");
         break;
@@ -49,7 +49,7 @@ const handleSignup = async (e, router) => {
         alert("You are banned from this site.");
         break;
       default:
-        alert(error.message + "/nCode: " + errorCode);
+        alert(error.message);
     }
   }
 };

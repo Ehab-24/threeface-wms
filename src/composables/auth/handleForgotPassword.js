@@ -13,7 +13,7 @@ const handleResetPassword = async (e) => {
 
     await sendPasswordResetEmail(auth, email.value);
     
-    alert("Password reset email sent!");
+    alert("Password reset email sent! 👍");
   } catch (error) {
     
     const errorCode = error.code;
