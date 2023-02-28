@@ -1,6 +1,9 @@
 <template>
   <div class="w-full flex justify-between">
-    <h1 class="text-3xl text-gray-200">Account</h1>
+    <div>
+        <h1 class="text-3xl text-gray-200">Account</h1>
+        <p class="text-sm text-gray-400 italic">{{ user?.email ?? "" }}</p>
+    </div>
     <outlined-button text="Sign Out" :onClick="handleSignOut" />
   </div>
 </template>
@@ -11,16 +14,29 @@
 import OutlinedButton from "../components/OutlinedButton.vue";
 import handleLogOut from "../composables/auth/handleLogOut";
 import { useRouter } from "vue-router";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { ref } from "vue";
 
 export default {
   components: { OutlinedButton },
     setup() {
 
         const router = useRouter();
+        const auth = getAuth();
+
+        const user = ref(null);
 
         const handleSignOut = () => handleLogOut(router);
 
-        return { handleSignOut };
+        onAuthStateChanged(auth, (u) => {
+            if (u) {
+                user.value = u;
+            } else {
+                user.value = null;
+            }
+        });
+
+        return { handleSignOut, user };
     },
 };
 </script>

@@ -1,16 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { getAuth } from 'firebase/auth';
 import { getUserState } from '../firebase/authentication.js';
 
-import Login from '../views/LoginPage.vue';
-import Signup from '../views/SignupPage.vue';
+import Login from '../views/auth/LoginPage.vue';
+import Signup from '../views/auth/SignupPage.vue';
+import ForgotPassword from '../views/auth/ForgotPasswordPage.vue';
 import Account from '../views/AccountPage.vue';
+import Home from '../views/HomePage.vue';
+
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import('../views/HomePage.vue'),
+        component: Home,
         meta: { requiresAuth: true }
     },
     {
@@ -23,6 +25,12 @@ const routes = [
         path: '/signup',
         name: 'signup',
         component: Signup,
+        meta: { requiresUnAuth: true }
+    },
+    {
+        path: '/forgot-password',
+        name: 'forgot-password',
+        component: ForgotPassword,
         meta: { requiresUnAuth: true }
     },
     {

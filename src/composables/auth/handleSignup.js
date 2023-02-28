@@ -49,7 +49,7 @@ const handleSignup = async (e, router) => {
         alert("You are banned from this site.");
         break;
       default:
-        alert("An error occurred. Please try again.");
+        alert(error.message + "/nCode: " + errorCode);
     }
   }
 };

@@ -23,25 +23,22 @@
         placeholder="Confirm Password"
         class="w-full h-10 mb-4 px-2 bg-black bg-opacity-10 caret-gray-200 hover:bg-opacity-20 focus:bg-opacity-30 rounded-md outline-none"
       />
-      <outlined-button type="submit" text="Register"/>
+      <outlined-button type="submit" text="Register" />
     </form>
     <div class="w-full md:w-2/3 xl:w-2/5 mt-16 pl-4 flex justify-center">
       <span class="text-gray-200"> Already have an account? &nbsp; </span>
-      <button
-        type="button"
-        @click="pushLoginPage"
-        class="underline text-orange-200 tracking-wide"
-      >
-        Log in
-      </button>
+      
+      <span class="underline underline-offset-2 text-orange-200">
+        <router-link to="/login">Log in</router-link>
+      </span>
     </div>
   </div>
 </template>
   
   
 <script>
-import OutlinedButton from "../components/OutlinedButton.vue";
-import handleSignup from "../composables/auth/handleSignup";
+import OutlinedButton from "../../components/OutlinedButton.vue";
+import handleSignup from "../../composables/auth/handleSignup";
 import { useRouter } from "vue-router";
 
 export default {
