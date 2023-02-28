@@ -28,7 +28,7 @@
 
 import Error from "./Error.vue";
 import Spinner from "./Spinner.vue";
-import getProjects from "../composables/getProjects.js";
+import getProjects from "../composables/project/getProjects.js";
 
 
 export default {

@@ -34,7 +34,7 @@
 <script>
 import Error from "../components/Error.vue";
 import Spinner from "../components/Spinner.vue";
-import getProject from "../composables/getProject";
+import getProject from "../composables/project/getProject";
 
 export default {
   props: {
