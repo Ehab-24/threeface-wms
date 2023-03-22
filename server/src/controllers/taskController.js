@@ -4,7 +4,40 @@ const mongoose = require("mongoose");
 /* ********** Mutations ********** */
 
 exports.createTask = async (req, res) => {
-  res.status(201).send("OK");
+  const {
+    userId,
+    username,
+    projectId,
+    title,
+    description,
+    status,
+    dueAt,
+    assignees,
+  } = req.body;
+
+  if (!projectId || !title || !dueAt || !status || !userId || !username) {
+    res.status(400).json({ message: "Missing required fields" });
+    return;
+  }
+
+  try {
+    const task = await Task.create({
+      owner: {
+        uid: userId,
+        name: username,
+      },
+      projectId,
+      title,
+      description,
+      status,
+      dueAt,
+      assignees: assignees ?? [],
+      comments: [],
+    });
+    res.status(201).json(task);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 exports.updateTask = async (req, res) => {
@@ -99,13 +132,13 @@ exports.getCommentsForTask = async (req, res) => {
         text: "$comments.text",
         owner: "$comments.owner",
         _id: "$comments._id",
-      }
+      },
     },
     {
       $project: {
-        comments: 0
-      }
-    }
+        comments: 0,
+      },
+    },
   ];
 
   if (req.query.sort) {
@@ -142,28 +175,8 @@ exports.getTaskCountForProject = async (req, res) => {
         _id: null,
         count: { $sum: 1 },
       },
-    }, 
+    },
   ];
-
-  // switch (req.query.status) {
-  //   case "completed":
-  //     pipeline[0].$match.status = "completed";
-  //     break;
-  //   case"in progress":
-  //     pipeline[0].$match.status = "in progress";
-  //     break;
-  //   case"todo":
-  //     pipeline[0].$match.status = "todo";
-  //     break;
-  //   case"cancelled":
-  //     pipeline[0].$match.status = "cancelled";
-  //     break;
-  //   case"planning":
-  //     pipeline[0].$match.status = "planning";
-  //     break;
-  //   default:
-  //     // status is not specified
-  // }
 
   try {
     const response = await Task.aggregate(pipeline);

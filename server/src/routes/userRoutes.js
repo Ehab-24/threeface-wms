@@ -7,6 +7,5 @@ module.exports = (router) => {
   router.post("/user/login", userController.loginUser);
 
 /* ********** Query ********** */
-  router.get("/users", userController.getAllUsers);
   router.get("/user/:id", userController.getUser);
 };

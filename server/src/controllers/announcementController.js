@@ -1,7 +1,32 @@
 const Announcement = require("../models/Announcement");
 const mongoose = require("mongoose");
 
-// TODO /* ********** Mutations ********** */
+/* ********** Mutations ********** */
+
+exports.createAnnouncement = async (req, res) => {
+  const { userId, username, projectId, text } = req.body;
+
+  if (!projectId || !text || !userId || !username) {
+    res.status(400).json({ message: "Missing required fields" });
+    return;
+  }
+
+  try {
+    const announcement = await Announcement.create({
+      owner: {
+        uid: userId,
+        name: username,
+      },
+      projectId,
+      text,
+      comments: [],
+    });
+    res.status(201).json(announcement);
+  }
+  catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
 
 /* ********** Query ********** */
 

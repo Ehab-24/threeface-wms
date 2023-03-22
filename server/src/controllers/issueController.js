@@ -1,7 +1,38 @@
 const Issue = require("../models/Issue");
 const mongoose = require("mongoose");
 
-// TODO /* ********** Mutations ********** */
+/* ********** Mutations ********** */
+
+exports.createIssue = async (req, res) => {
+  const { userId, username, projectId, title, description, assignees } = req.body;
+
+  if (!projectId || !title || !userId || !username) {
+    res.status(400).json({ message: "Missing required fields" });
+    return;
+  }
+
+  try {
+    const issue = await Issue.create({
+      owner: {
+        uid: userId,
+        name: username,
+      },
+      projectId,
+      title,
+      description,
+      assignees: assignees ?? [],
+      comments: [],
+    });
+    res.status(201).json(issue);
+  }
+  catch (err) {
+    if (err.name === "ValidationError") {
+      res.status(400).json({ message: err.message });
+      return;
+    }
+    res.status(500).json({ message: err.message });
+  }
+}
 
 /* ********** Query ********** */
 

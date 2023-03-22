@@ -2,7 +2,8 @@ const announcementController = require('../controllers/announcementController');
 
 module.exports = (router) => {
 
-    // TODO /* ********** Mutation ********** */
+/* ********** Mutation ********** */
+  router.post("/announcement", announcementController.createAnnouncement);
 
 /* ********** Query ********** */
   router.get("/announcement/:id", announcementController.getAnnouncement);

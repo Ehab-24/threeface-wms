@@ -3,6 +3,7 @@ const issueController = require("../controllers/issueController");
 module.exports = (router) => {
     
 /* ********** Mutation ********** */
+  router.post("/issue", issueController.createIssue);
 
 /* ********** Query ********** */
   router.get(

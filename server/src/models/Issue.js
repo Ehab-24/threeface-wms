@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// ! const uniqueValidator = require("mongoose-unique-validator");
 
 const AssigneeSchema = require("./Assignee");
 const CommentSchema = require("./Comment");
@@ -12,6 +13,7 @@ const IssueSchema = new mongoose.Schema({
             immutable: true,
         },
         name: {
+
             type: String, 
             required: true,
             immutable: true,
@@ -27,6 +29,8 @@ const IssueSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxLength: 50,
+        // unique: true,
+        // uniqueCaseInsensitive: true,
     },
     description: {
         type: String,
@@ -35,6 +39,7 @@ const IssueSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
+        default: "active",
         maxLength: 10,
     },
     createdAt: {
@@ -51,5 +56,6 @@ const IssueSchema = new mongoose.Schema({
     assignees: [AssigneeSchema],
     comments: [CommentSchema],
 });
+// ! IssueSchema.plugin(uniqueValidator, { message: "Title must be unique" });
 
 module.exports = mongoose.model("Issue", IssueSchema);
