@@ -4,11 +4,14 @@ const cors = require("cors");
 const router = require("./routes");
 
 const app = express();
+
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 require("dotenv").config({path: "./config/.env"});
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
