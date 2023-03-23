@@ -12,16 +12,29 @@ exports.createProject = async (req, res) => {
   }
 
   try {
-    const Project = await Project.create({
+    const project = await Project.create({
       ownerId: userId,
       title,
       description,
       dueAt,
       assignees,
     });
+    res.status(201).json(project);
   }
   catch (err) {
-    res.status(500).json({ message: err.message });
+
+    if (err) {
+      if (err.name === "ValidationError") {
+        res.status(400).json({ message: err.message });
+        return;
+      }
+      else {
+        res.status(500).json({ message: err.message });
+        return;
+      }
+    }
+
+    res.sendStatus(500);
   }
 };
 
