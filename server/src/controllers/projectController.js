@@ -1,12 +1,13 @@
 const Project = require("../models/Project");
 const mongoose = require("mongoose");
+const helpers = require("./helpers");
 
 /* ********** Mutations ********** */
 
 exports.createProject = async (req, res) => {
   const { userId, title, description, dueAt, assignees } = req.body;
 
-  if(!userId || !title || !dueAt) {
+  if (!userId || !title || !dueAt) {
     res.status(400).json({ message: "Missing required fields" });
     return;
   }
@@ -20,15 +21,12 @@ exports.createProject = async (req, res) => {
       assignees,
     });
     res.status(201).json(project);
-  }
-  catch (err) {
-
+  } catch (err) {
     if (err) {
       if (err.name === "ValidationError") {
         res.status(400).json({ message: err.message });
         return;
-      }
-      else {
+      } else {
         res.status(500).json({ message: err.message });
         return;
       }
@@ -57,12 +55,19 @@ exports.getProject = async (req, res) => {
         : await Project.findById(id);
     res.status(200).json(project);
   } catch (err) {
-    res.sendStatus(400);
+    if (err) {
+      res.status(400).json({ message: err.message });
+      return;
+    }
+    res.sendStatus(500);
   }
 };
 
 exports.getProjectsForUser = async (req, res) => {
   const pipeline = [
+    {
+      $match: {} // * This is a placeholder for pipeline[0].$match.status
+    },
     {
       $unwind: "$assignees",
     },
@@ -73,26 +78,19 @@ exports.getProjectsForUser = async (req, res) => {
     },
   ];
 
-  if (req.query.limit) {
-    pipeline.push({
-      $limit: parseInt(req.query.limit),
-    });
-  }
-
-  if (req.query.short === "true") {
-    pipeline.push({
-      $project: {
-        ownerId: false,
-        assignees: false,
-        createdAt: false,
-      },
-    });
-  }
-
   try {
+    helpers.sortByCreatedAt(req, pipeline);
+    helpers.shortProjection(req, pipeline);
+    helpers.specificStatus(req, pipeline);
+    helpers.pageAndLimit(req, pipeline);
+
     const projects = await Project.aggregate(pipeline);
     res.status(200).json(projects);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    if (err) {
+      res.status(400).json({ message: err.message });
+      return;
+    }
+    res.sendStatus(500);
   }
 };

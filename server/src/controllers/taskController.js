@@ -1,6 +1,8 @@
 const Task = require("../models/Task");
 const mongoose = require("mongoose");
 
+const helpers = require("./helpers");
+
 /* ********** Mutations ********** */
 
 exports.createTask = async (req, res) => {
@@ -72,7 +74,7 @@ exports.getTask = async (req, res) => {
     const task = await Task.aggregate(pipeline);
     res.status(200).json(task);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -89,21 +91,17 @@ exports.getTasksForProject = async (req, res) => {
       },
     },
   ];
-  if (req.query.short === "true") {
-    pipeline.push({
-      $project: {
-        comments: 0,
-        assignees: 0,
-        createdAt: 0,
-      },
-    });
-  }
 
   try {
+    helpers.specificStatus(req, pipeline);
+    helpers.sortByCreatedAt(req, pipeline);
+    helpers.shortProjection(req, pipeline);
+    helpers.pageAndLimit(req, pipeline);
+
     const tasks = await Task.aggregate(pipeline);
     res.status(200).json(tasks);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -141,25 +139,14 @@ exports.getCommentsForTask = async (req, res) => {
     },
   ];
 
-  if (req.query.sort) {
-    pipeline.push({
-      $sort: {
-        createdAt: req.query.sort === "asc" ? 1 : -1,
-      },
-    });
-  }
-
-  if (req.query.limit) {
-    pipeline.push({
-      $limit: parseInt(req.query.limit),
-    });
-  }
-
   try {
+    helpers.sortByCreatedAt(req, pipeline);
+    helpers.pageAndLimit(req, pipeline);
+
     const comments = await Task.aggregate(pipeline);
     res.status(200).json(comments);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -182,6 +169,6 @@ exports.getTaskCountForProject = async (req, res) => {
     const response = await Task.aggregate(pipeline);
     res.status(200).json(response[0].count);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };

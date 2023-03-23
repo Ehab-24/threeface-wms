@@ -1,5 +1,6 @@
 const Issue = require("../models/Issue");
 const mongoose = require("mongoose");
+const helpers = require("./helpers");
 
 /* ********** Mutations ********** */
 
@@ -52,21 +53,12 @@ exports.getIssuesForProject = async (req, res) => {
     },
   ];
 
-  if (req.query.status) {
-    pipeline[0].$match.status = req.query.status;
-  }
-
-  if (req.query.short === "true") {
-    pipeline.push({
-      $project: {
-        comments: 0,
-        assignees: 0,
-        createdAt: 0,
-      },
-    });
-  }
-
   try {
+    helpers.specificStatus(req, pipeline);
+    helpers.sortByCreatedAt(req, pipeline);
+    helpers.shortProjection(req, pipeline);
+    helpers.pageAndLimit(req, pipeline);
+
     const issues = await Issue.aggregate(pipeline);
     res.status(200).json(issues);
   } catch (err) {
@@ -97,7 +89,7 @@ exports.getIssueCountForProject = async (req, res) => {
     const response = await Issue.aggregate(pipeline);
     res.status(200).json(response[0].count);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -125,7 +117,7 @@ exports.getIssue = async (req, res) => {
     const issue = await Issue.aggregate(pipeline);
     res.status(200).json(issue);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -163,24 +155,14 @@ exports.getCommentsForIssue = async (req, res) => {
     }
   ];
 
-  if (req.query.sort) {
-    pipeline.push({
-      $sort: {
-        createdAt: req.query.sort === "asc" ? 1 : -1,
-      },
-    });
-  }
-
-  if (req.query.limit) {
-    pipeline.push({
-      $limit: parseInt(req.query.limit),
-    });
-  }
-
+  
   try {
+    helpers.sortByCreatedAt(req, pipeline);
+    helpers.pageAndLimit(req, pipeline);
+
     const comments = await Issue.aggregate(pipeline);
     res.status(200).send(comments);
   } catch (err) {
-    res.sendStatus(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
