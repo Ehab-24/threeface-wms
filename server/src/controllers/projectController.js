@@ -4,8 +4,25 @@ const mongoose = require("mongoose");
 /* ********** Mutations ********** */
 
 exports.createProject = async (req, res) => {
-  // res.send(req.headers);
-  req.body ? res.status(201).send("OK") : res.status(400).send("Bad Request");
+  const { userId, title, description, dueAt, assignees } = req.body;
+
+  if(!userId || !title || !dueAt) {
+    res.status(400).json({ message: "Missing required fields" });
+    return;
+  }
+
+  try {
+    const Project = await Project.create({
+      ownerId: userId,
+      title,
+      description,
+      dueAt,
+      assignees,
+    });
+  }
+  catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 exports.updateProject = async (req, res) => {

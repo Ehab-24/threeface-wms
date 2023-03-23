@@ -23,6 +23,7 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxLength: 6,
+    default: "active",
   },
   createdAt: {
     type: Date,
