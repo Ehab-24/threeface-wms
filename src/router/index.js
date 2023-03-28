@@ -1,10 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { getUserState } from '../firebase/authentication.js';
+import { getUserState } from '../repository/authentication.js';
 
-import Login from '../views/auth/LoginPage.vue';
-import Signup from '../views/auth/SignupPage.vue';
-import ForgotPassword from '../views/auth/ForgotPasswordPage.vue';
-import Account from '../views/AccountPage.vue';
 import Home from '../views/HomePage.vue';
 
 
@@ -14,50 +10,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: { requiresAuth: true }
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        meta: { requiresUnAuth: true }
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: Signup,
-        meta: { requiresUnAuth: true }
-    },
-    {
-        path: '/forgot-password',
-        name: 'forgot-password',
-        component: ForgotPassword,
-        meta: { requiresUnAuth: true }
-    },
-    {
-        path: '/projects',
-        name: 'projects',
-        component: () => import('../views/ProjectsPage.vue'),
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/project/:id',
-        name: 'project',
-        props: true,
-        component: () => import('../views/ProjectPage.vue'),
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: () => import('../views/DashboardPage.vue'),
-        meta: { requiresAuth: true }
-    },
-    {
-        path: '/account',
-        name: 'account',
-        component: Account,
-        meta: { requiresAuth: true }
-    },
+    }
 ];
 
 const router = createRouter({

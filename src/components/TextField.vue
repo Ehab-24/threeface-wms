@@ -1,46 +1,24 @@
-<template>
-  <input
-    :name="nameText"
-    :type="typeText"
-    :max-length="maxLength"
-    :placeholder="placeholderText"
-    class="w-full h-10 md:w-[400px] mb-4 px-2 flex bg-black bg-opacity-10 hover:bg-opacity-20 focus:bg-opacity-30 text-gray-200 caret-gray-200 rounded-md outline-none"
-  />
-</template>
+<script setup>
+import { defineProps } from 'vue'
 
-<script>
-export default {
-  props: {
-    nameText: {
-      type: String,
-      required: true,
+const props = defineProps({
+    label: {
+        type: String,
+        required: true
     },
-    typeText: {
-      type: String,
-      default: "text",
-    },
-    placeholderText: {
-      type: String,
-      required: true,
-    },
-    maxLength: {
-      type: Number,
-      default: 255,
-    },
-  },
-  setup() {},
-};
+    placeholder: {
+        type: String,
+        required: true
+    }
+});
 </script>
 
 
-<style scoped>
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #181a29 inset !important;
-}
-input:-webkit-autofill {
-  -webkit-text-fill-color: white !important;
-}
-</style>
+
+
+<template>
+    <div class="flex flex-col">
+        <label class="text-sm text-gray-700">{{ label }}</label>
+        <input class="px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-500 focus:outline-none focus:border-gray-500 transition-all" type="text" :placeholder="placeholder" />
+    </div>
+</template>

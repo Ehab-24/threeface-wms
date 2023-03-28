@@ -1,11 +1,25 @@
 <script setup>
-import NavBar from "./components/NavBar.vue"
+
+import HomePage from './views/HomePage.vue';
+import Titlebar from './components/Titlebar.vue';
+import Sidebar from './components/Sidebar.vue';
 
 </script>
 
 <template>
-  <main class="h-screen px-12 bg-gradient-to-b from-background1 to-background2">
-    <nav-bar />
-    <router-view />
+  <main class="h-screen bg-gray-200">
+    <!-- <router-view /> -->
+    <Titlebar />
+
+    <div class="flex">
+    
+      <Sidebar />
+
+      <div class="w-16"></div>
+
+      <HomePage />
+    
+    </div>
+
   </main>
 </template>

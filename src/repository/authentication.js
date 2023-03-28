@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted } from "vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import app from "./index";
+import app from "./firebase";
 
 const auth = getAuth(app);
 
