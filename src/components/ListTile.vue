@@ -24,15 +24,13 @@ const props = defineProps({
 
 
 <template>
-    
     <router-link :to='link' class="h-min px-4 py-2 my-1 rounded-lg flex justify-between hover:bg-gray-300 transition-all">
-    
-        <font-awesome-icon :icon='icon'/>
+
+        <font-awesome-icon :icon='icon' />
 
         <div class="w-16"></div>
-        
-        <v-b1>{{ title }}</v-b1>
-    
-    </router-link>
 
+        <v-b1>{{ title }}</v-b1>
+
+    </router-link>
 </template>

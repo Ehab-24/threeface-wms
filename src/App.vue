@@ -8,18 +8,13 @@ import Sidebar from './components/Sidebar.vue';
 
 <template>
   <main class="h-screen bg-gray-200">
-    <!-- <router-view /> -->
     <Titlebar />
 
-    <div class="flex">
-    
-      <Sidebar />
+  <div class="flex">
 
-      <div class="w-16"></div>
-
-      <HomePage />
-    
-    </div>
-
+    <Sidebar />
+    <router-view />
+  </div>
+  
   </main>
 </template>
