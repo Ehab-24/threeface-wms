@@ -1,7 +1,9 @@
 <script setup>
+
 import Card from '../components/Card.vue';
 import MiniCard from '../components/MiniCard.vue';
 import VH1 from '../components/VH1.vue';
+
 </script>
 
 
@@ -11,6 +13,8 @@ import VH1 from '../components/VH1.vue';
     <div class="flex flex-col">
 
         <v-h1>Home Page</v-h1>
+
+        <div class="h-4"></div>
 
         <Card title="Card">
             <template #body>

@@ -6,7 +6,7 @@ import handleSignout from '../composables/auth/handleSignout';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const onSignout = () => handleSignout(router);
+const pushProfilePage = () => router.push('/profile');
 
 </script>
 
@@ -26,7 +26,7 @@ const onSignout = () => handleSignout(router);
 
         </div>
 
-        <IconButton @click="onSignout"/>
+        <IconButton @click="pushProfilePage"/>
 
     </div>
 </template>
