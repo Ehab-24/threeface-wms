@@ -2,6 +2,8 @@
 
 import { defineProps } from 'vue'
 
+import VB1 from './VB1.vue'
+
 const props = defineProps({
     title: {
         type: String,
@@ -29,7 +31,7 @@ const props = defineProps({
 
         <div class="w-16"></div>
         
-        <h2 class="text-sm text-gray-700">{{ title }}</h2>
+        <v-b1>{{ title }}</v-b1>
     
     </router-link>
 

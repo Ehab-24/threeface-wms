@@ -2,6 +2,9 @@
 
 import { computed, defineProps } from 'vue'
 
+import VB1 from './VB1.vue';
+import VD1 from './VD1.vue';
+
 const props = defineProps({
     title: {
         type: String,
@@ -18,7 +21,7 @@ const props = defineProps({
 });
 
 const val = computed(() => {
-    return props.value > 999? (props.value / 1000).toFixed(1) + 'k' : props.value;
+    return props.value > 999 ? (props.value / 1000).toFixed(1) + 'k' : props.value;
 });
 
 </script>
@@ -27,11 +30,11 @@ const val = computed(() => {
 <template>
     <div class=" w-36 h-min flex flex-col items-start shadow-sm bg-gray-200 rounded-2xl p-4">
 
-        <font-awesome-icon :icon='icon' class="pb-4 text-3xl text-gray-700"/>
+        <font-awesome-icon :icon='icon' class="pb-4 text-3xl text-gray-700" />
 
-        <h3 class="text-sm text-gray-700">{{ title }}</h3>
+        <VB1>{{ title }}</VB1>
 
-        <p class="text-2xl text-gray-900 font-bold">{{ val }}</p>
+        <v-d1>{{ val }}</v-d1>
 
     </div>
 </template>
