@@ -16,7 +16,7 @@ import VH1 from '../components/VH1.vue';
 
         <div class="h-4"></div>
 
-        <Card title="Card">
+        <card title="Card">
             <template #body>
                 <div class="flex gap-4">
 
@@ -26,6 +26,6 @@ import VH1 from '../components/VH1.vue';
 
                 </div>
             </template>
-        </Card>
+        </card>
     </div>
 </template>

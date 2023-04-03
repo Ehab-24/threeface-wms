@@ -1,14 +1,12 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
-import { createUser } from "../../repository/firestore";
+import { createVendor } from "../../repository/db/vendor";
 
 const handleSignup = async (e, router) => {
 // This function receives the `event object` and the `vue-router` as arguments
   const auth = getAuth();
 
   const { email, password, confirmPassword } = e.target.elements;
-  
-  console.log(confirmPassword.value);
 
   try {
 
@@ -25,14 +23,10 @@ const handleSignup = async (e, router) => {
       password.value
     );
 
-    const user = {
-      _id: userCredential.user.uid,
-      name: "Jeff",
-    };
-    console.log("🚀 ~ file: handleSignup.js:27 ~ handleSignup ~ user:", user)
-    
-    await createUser(user);
+    // * Create vendor in db
+    await createVendor(userCredential.user.uid);
 
+    // * Navigate to home page
     router.push("/");
   } catch (error) {
     const errorCode = error.code;

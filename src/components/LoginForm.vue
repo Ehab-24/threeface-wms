@@ -12,7 +12,7 @@ const onSignIn = (e) => handleLogin(e, router);
 <template>
     <section class="w-full h-full bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0">
-            
+
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
                 Flowbite
@@ -49,18 +49,21 @@ const onSignIn = (e) => handleLogin(e, router);
                                     <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
                                 </div>
                             </div>
-                            <router-link to="/forgot-password" class="text-sm font-medium text-pink-600 hover:underline dark:text-pink-500">
+                            <router-link to="/forgot-password"
+                                class="text-sm font-medium text-pink-600 hover:underline dark:text-pink-500">
                                 Forgot password?
                             </router-link>
                         </div>
                         <button type="submit"
                             class="w-full text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800">Sign
-                            in</button>
+                            in
+                        </button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don't have an account yet?
                             <router-link to="/signup"
                                 class="font-medium text-pink-600 hover:underline dark:text-pink-500">Sign
-                                up</router-link>
+                                up
+                            </router-link>
                         </p>
                     </form>
                 </div>
