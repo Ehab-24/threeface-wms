@@ -1,15 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { getUserState } from '../repository/authentication.js';
 
-import Home from '../views/HomePage.vue';
-
+import BaseTemplate from '../views/BaseTemplate.vue';
 
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: Home,
-        meta: { requiresAuth: true }
+        name: 'base',
+        component: BaseTemplate,
+        meta: { requiresAuth: true },
+        children: [
+            {
+                path: '',
+                name: 'home',
+                component: () => import('../views/HomePage.vue'),
+            },
+            {
+                path: '/profile',
+                name: 'profile',
+                component: () => import('../views/ProfilePage.vue'),
+            },
+            {
+                path: '/inventory',
+                name: 'inventory',
+                component: () => import('../views/InventoryPage.vue'),
+            },
+            {
+                path: '/invoice',
+                name: 'invoice',
+                component: () => import('../views/InvoicePage.vue'),
+            }
+        ]
     },
     {
         path: '/login',
