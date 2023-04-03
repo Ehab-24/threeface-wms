@@ -1,6 +1,8 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const handleLogin = async (e, router) => {
+// This function receives the `event object` and the `vue-router` as arguments
+
   const auth = getAuth();
 
   const { email, password } = e.target.elements;
@@ -13,6 +15,7 @@ const handleLogin = async (e, router) => {
 
     const userCredentials = await signInWithEmailAndPassword(auth, email.value, password.value);
 
+    // Push HomePage
     router.push("/");
   } catch (error) {
     const errorCode = error.code;

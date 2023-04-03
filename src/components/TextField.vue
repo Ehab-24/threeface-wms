@@ -3,8 +3,7 @@ import { defineProps } from 'vue'
 
 const props = defineProps({
     label: {
-        type: String,
-        required: true
+        type: String
     },
     placeholder: {
         type: String,

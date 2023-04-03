@@ -16,9 +16,9 @@ import VH1 from '../components/VH1.vue';
             <template #body>
                 <div class="flex gap-4">
 
-                    <MiniCard title="MiniCard 1" icon="fa-user-secret" value="240" />
+                    <MiniCard title="MiniCard 1" icon="fa-user-secret" :value=240 />
 
-                    <MiniCard title="MiniCard 2" icon="fa-user-secret" value="1600" />
+                    <MiniCard title="MiniCard 2" icon="fa-user-secret" :value=1600 />
 
                 </div>
             </template>
