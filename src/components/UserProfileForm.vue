@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 
 import { useRouter } from 'vue-router';
 import ElevatedButton from './ElevatedButton.vue';
-import updateUserProfile from '../composables/auth/updateUserProfile.js';
+import updateUserProfile from '../composables/auth/updateUserProfile';
 
 const router = useRouter();
 const onSubmit = (e) => updateUserProfile(e);

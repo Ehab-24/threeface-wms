@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import TextField from './TextField.vue';
 import IconButton from './IconButton.vue';

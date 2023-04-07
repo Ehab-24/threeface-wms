@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import VH1 from '../components/VH1.vue';
 

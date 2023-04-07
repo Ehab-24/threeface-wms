@@ -1,6 +1,7 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Router } from "vue-router";
 
-const handleLogin = async (e, router) => {
+const handleLogin = async (e: any, router: Router) => {
 // This function receives the `event object` and the `vue-router` as arguments
 
   const auth = getAuth();
@@ -17,7 +18,7 @@ const handleLogin = async (e, router) => {
 
     // Push HomePage
     router.push("/");
-  } catch (error) {
+  } catch (error: any) {
     const errorCode = error.code;
 
     switch (errorCode) {

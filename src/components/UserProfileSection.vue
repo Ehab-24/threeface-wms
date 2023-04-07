@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import VH2 from './VH2.vue';
 import { getUserState } from '../repository/authentication';
