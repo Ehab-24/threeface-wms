@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts">
 
-import { useRouter } from 'vue-router';
-import handleForgotPassword from '../composables/auth/handleForgotPassword.js';
+import { Router, useRouter } from 'vue-router';
+import handleForgotPassword from '../composables/auth/handleForgotPassword';
 
-const router = useRouter();
-const onSubmit = (e) => handleForgotPassword(e, router);
+const router: Router = useRouter();
+const onSubmit = (e: any) => handleForgotPassword(e);
 
 </script>
 
@@ -32,7 +32,7 @@ const onSubmit = (e) => handleForgotPassword(e, router);
                             </label>
                             <input type="email" name="email" id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
-                                placeholder="name@company.com" required="">
+                                placeholder="name@company.com" required=true>
                         </div>
 
                         <button type="submit"

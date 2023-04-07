@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getAuth } from "firebase/auth";
+import { Router } from "vue-router";
 import { createVendor } from "../../repository/db/vendor";
 
-const handleSignup = async (e, router) => {
+const handleSignup = async (e: any, router: Router) => {
 // This function receives the `event object` and the `vue-router` as arguments
   const auth = getAuth();
-
   const { email, password, confirmPassword } = e.target.elements;
 
   try {
@@ -28,7 +28,7 @@ const handleSignup = async (e, router) => {
 
     // * Navigate to home page
     router.push("/");
-  } catch (error) {
+  } catch (error: any) {
     const errorCode = error.code;
 
     switch (errorCode) {

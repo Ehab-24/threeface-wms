@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import { defineProps } from 'vue'
 
@@ -26,7 +26,7 @@ const props = defineProps({
 <template>
     <router-link :to='link' class="h-min px-4 py-2 my-1 flex rounded-lg hover:bg-gray-300 transition-all">
 
-        <font-awesome-icon :icon='icon' />
+        <div class="w-6 h-6 bg-gray-500">ico</div>
 
         <div class="w-16"></div>
 
