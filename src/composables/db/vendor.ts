@@ -1,2 +1,3 @@
-// import { createVendor, getVendor } from "../../repository/db/vendor.js";
-
+type Vendor = {
+    id: string,
+}
