@@ -4,6 +4,7 @@ import {
   NavigationGuard,
   Router,
 } from "vue-router";
+import { User } from "firebase/auth";
 import { getUserState } from "../repository/authentication.js";
 
 import BaseTemplate from "../views/BaseTemplate.vue";
@@ -36,9 +37,9 @@ const routes = [
         component: () => import("../views/InvoicePage.vue"),
       },
       {
-        path: "/customerlog",
-        name: "customerlog",
-        component: () => import("../views/customerlogs.vue"),
+        path: "/customers",
+        name: "customers",
+        component: () => import("../views/CustomersPage.vue"),
       },
     ],
   },

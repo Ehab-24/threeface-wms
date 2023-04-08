@@ -1,15 +1,18 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import { Router } from "vue-router";
 import { createVendor } from "../../repository/db/vendor";
 
 const handleSignup = async (e: any, router: Router) => {
-// This function receives the `event object` and the `vue-router` as arguments
+  // This function receives the `event object` and the `vue-router` as arguments
   const auth = getAuth();
   const { email, password, confirmPassword } = e.target.elements;
 
   try {
-
     if (!email.value || !password.value || !confirmPassword.value) {
       throw new Error("Missing required fields. 😠");
     }
@@ -22,6 +25,12 @@ const handleSignup = async (e: any, router: Router) => {
       email.value,
       password.value
     );
+
+    await sendEmailVerification(userCredential.user);
+
+    if (!userCredential.user.emailVerified) {
+      throw new Error("Email not verified. Please check your inbox. 📬");
+    }
 
     // * Create vendor in db
     await createVendor(userCredential.user.uid);

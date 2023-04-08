@@ -14,13 +14,16 @@ const onSignout = (): Promise<void> => handleSignout(router);
 
 
 <template>
-    <v-h1>Profile Page</v-h1>
-    <div class="h-4"></div>
-    <elevated-button @click="onSignout">Sign out</elevated-button>
+    <div class="flex justify-between">
+        <v-h1>Profile Page</v-h1>
+        <elevated-button @click="onSignout">Sign out</elevated-button>
+    </div>
 
     <suspense>
         <UserProfileSection />
     </suspense>
 
-    <user-profile-form />
+    <div class="w-full flex justify-center">
+        <user-profile-form />
+    </div>
 </template>

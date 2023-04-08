@@ -4,15 +4,14 @@ import { useRouter } from 'vue-router';
 import ElevatedButton from './ElevatedButton.vue';
 import updateUserProfile from '../composables/auth/updateUserProfile';
 
-const router = useRouter();
-const onSubmit = (e) => updateUserProfile(e);
+const onSubmit = (e: any) => updateUserProfile(e);
 
 </script>
 
 
 <template>
-    <section class="w-full h-full bg-gray-50 dark:bg-gray-900">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0">
+    <section class="w-full">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
 
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
@@ -30,14 +29,14 @@ const onSubmit = (e) => updateUserProfile(e);
                                 name</label>
                             <input type="text" name="name" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
-                                placeholder="name@company.com" required="">
+                                placeholder="name@company.com" required=true>
                         </div>
                         <div>
-                            <label for="imageURL"
+                            <label for="photoURL"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image URL</label>
-                            <input type="text" name="imageURL" id="imageURL" placeholder="https://loremflickr.com/320/240"
+                            <input type="text" name="photoURL" id="photoURL" placeholder="https://loremflickr.com/320/240"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
-                                required="">
+                                required=true>
                         </div>
 
                         <elevated-button type="submit">
