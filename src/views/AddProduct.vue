@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang = "ts">
 
 import ProductForm from '../components/AddProductForm.vue';
 import VH1 from '../components/VH1.vue';
@@ -8,8 +8,8 @@ import VH1 from '../components/VH1.vue';
 
 <template>
     <VH1>Add Product</VH1>
-    <ProductForm>
-
-    </ProductForm>
+    <Suspense>
+        <ProductForm/>
+    </Suspense>
 
 </template>
