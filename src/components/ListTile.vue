@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
-import custicon from './customericon.vue';
-import homeicon from './homeicon.vue';
-import inventicon from './inventicon.vue';
-import invoiceicon from './invoiceicon.vue';
+import custicon from './CustomerIcon.vue';
+import homeicon from './HomeIcon.vue';
+import inventicon from './InventIcon.vue';
+import invoiceicon from './InvoiceIcon.vue';
 import { defineProps } from 'vue'
 
 import VH3 from './VH3.vue'
