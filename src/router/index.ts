@@ -35,6 +35,11 @@ const routes = [
         name: "invoice",
         component: () => import("../views/InvoicePage.vue"),
       },
+      {
+        path: "/customerlog",
+        name: "customerlog",
+        component: () => import("../views/customerlogs.vue"),
+      },
     ],
   },
   {
