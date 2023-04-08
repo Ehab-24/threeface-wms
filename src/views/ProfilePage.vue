@@ -1,14 +1,14 @@
-<script setup>
+<script setup lang="ts">
 
 import ElevatedButton from '../components/ElevatedButton.vue';
 import VH1 from '../components/VH1.vue';
 import UserProfileSection from '../components/UserProfileSection.vue';
 import handleSignout from '../composables/auth/handleSignout';
 import UserProfileForm from '../components/UserProfileForm.vue';
-import { useRouter } from 'vue-router';
+import { Router, useRouter } from 'vue-router';
 
-const router = useRouter();
-const onSignout = () => handleSignout(router);
+const router: Router = useRouter();
+const onSignout = (): Promise<void> => handleSignout(router);
 
 </script>
 

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import { defineProps } from 'vue'
 import VH1 from './VH1.vue';

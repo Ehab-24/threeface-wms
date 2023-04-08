@@ -1,6 +1,6 @@
 import { updateUser } from "../../repository/authentication";
 
-const updateUserProfile = async (e) => {
+const updateUserProfile = async (e: any) => {
   // This function receives the `event object` as an argument
 
   const { name, imageURL } = e.target.elements;
@@ -11,10 +11,10 @@ const updateUserProfile = async (e) => {
 
   try {
     await updateUser({
-      name: name.value,
-      imageURL: imageURL.value,
+      name: name.value as string,
+      imageUrl: imageURL.value as string,
     });
-  } catch (error) {
+  } catch (error: any) {
     // ! dev only
     console.error(error.message);
   }

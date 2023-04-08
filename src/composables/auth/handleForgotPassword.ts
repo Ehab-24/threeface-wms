@@ -1,6 +1,6 @@
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
-const handleResetPassword = async (e) => {
+const handleResetPassword = async (e: any) => {
 // This function receives the `event object` as arguments
 
   try {
@@ -15,7 +15,7 @@ const handleResetPassword = async (e) => {
     await sendPasswordResetEmail(auth, email.value);
 
     alert("Password reset email sent! 👍");
-  } catch (error) {
+  } catch (error: any) {
     const errorCode = error.code;
 
     switch (errorCode) {

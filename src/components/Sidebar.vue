@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import ListTile from './ListTile.vue';
 import VH2 from './VH2.vue';

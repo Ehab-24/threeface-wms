@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 import { computed, defineProps } from 'vue'
 
@@ -30,7 +30,7 @@ const val = computed(() => {
 <template>
     <div class=" w-36 h-min flex flex-col items-start shadow-sm bg-gray-200 rounded-2xl p-4">
 
-        <font-awesome-icon :icon='icon' class="pb-4 text-3xl text-gray-700" />
+        <div class="w-6 h-6 mb-4 bg-gray-500">ico</div>
 
         <VB1>{{ title }}</VB1>
 

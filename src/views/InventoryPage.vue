@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 
 import ElevatedButton from '../components/ElevatedButton.vue';
