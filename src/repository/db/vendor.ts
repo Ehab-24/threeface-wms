@@ -12,7 +12,7 @@ const createVendor = async (id: string ): Promise<void> => {
   }
 };
 
-const getVendor = async (id: any ): Promise<Vendor> => {
+const getVendor = async (id: string ): Promise<Vendor> => {
   const docSnap = await getDoc(doc(db, "vendors", id));
 
   const data = docSnap.data();

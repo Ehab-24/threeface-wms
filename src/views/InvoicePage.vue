@@ -8,4 +8,6 @@ import VH1 from '../components/VH1.vue';
 
 <template>
     <v-h1>Invoice Page</v-h1>
+
+    
 </template>

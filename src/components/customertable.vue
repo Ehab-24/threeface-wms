@@ -11,16 +11,16 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                   Customer name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Color
+                    CreatedAt
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Product count
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    Bill
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -30,13 +30,13 @@
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                   John Wick
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                  12-12-2021
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                    69
                 </td>
                 <td class="px-6 py-4">
                     $2999
@@ -47,33 +47,33 @@
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
+                   John Wick
                 </th>
                 <td class="px-6 py-4">
-                    White
+                  12-12-2021
                 </td>
                 <td class="px-6 py-4">
-                    Laptop PC
+                    69
                 </td>
                 <td class="px-6 py-4">
-                    $1999
+                    $2999
                 </td>
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
             </tr>
-            <tr class="bg-white dark:bg-gray-800">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
+                   John Wick
                 </th>
                 <td class="px-6 py-4">
-                    Black
+                  12-12-2021
                 </td>
                 <td class="px-6 py-4">
-                    Accessories
+                    69
                 </td>
                 <td class="px-6 py-4">
-                    $99
+                    $2999
                 </td>
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
