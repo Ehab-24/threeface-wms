@@ -18,6 +18,11 @@ const data = [
         title: 'Invoice',
         icon: 'fa-user-secret',
         link: '/invoice'
+    },
+    {
+        title: 'customerlogs',
+        icon: 'fa-user-secret',
+        link: '/customerlog'
     }
 ];
 
