@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 
-const props = defineProps({
+defineProps({
     label: {
         type: String
     },
@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
     <div class="flex flex-col">
-        <label class="text-sm text-gray-700">{{ label }}</label>
-        <input class="px-4 py-2 rounded-lg border border-gray-300 hover:border-gray-500 focus:outline-none focus:border-gray-500 transition-all" type="text" :placeholder="placeholder" />
+        <label class="text-sm text-gray-700 dark:text-gray-300">{{ label }}</label>
+        <input class="px-4 py-2 rounded-lg bg-transparent border border-gray-300 hover:border-gray-500 dark:border-gray-700 focus:border-gray-500 transition-all" type="text" :placeholder="placeholder" />
     </div>
 </template>

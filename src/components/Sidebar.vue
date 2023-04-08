@@ -21,9 +21,11 @@ const data = [
         link: '/invoice'
     },
     {
-        title: 'customers',
+
+        title: 'Customers',
         icon: 'custicon',
-        link: '/customerlog'
+        link: '/customers'
+
     }
 ];
 
@@ -31,7 +33,10 @@ const data = [
 
 
 <template>
-    <div class="h-full w-56 px-4 py-8 flex flex-col bg-white shadow-lg ">
+
+
+    <div class="min-h-full w-56 px-4 py-8 flex flex-col bg-white dark:bg-gray-800 shadow-lg">
+
         <v-h2>Sidebar</v-h2>
         <div class="h-6"></div>
         <div class="flex flex-col">

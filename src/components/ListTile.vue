@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import custicon from './customericon.vue';
 import homeicon from './homeicon.vue';
 import inventicon from './inventicon.vue';
@@ -7,7 +8,7 @@ import { defineProps } from 'vue'
 
 import VH3 from './VH3.vue'
 
-const props = defineProps({
+defineProps  ({
     title: {
         type: String,
         required: true
@@ -27,28 +28,30 @@ const props = defineProps({
 
 
 <template>
-    <router-link :to='link' class="h-min px-4 py-2 my-1 flex rounded-lg    transition-all hover:bg-green-100 hover:text-green-700">
-     
+
+    <router-link :to='link'>
+
+     <a href="#"  class="h-min px-4 py-2 my-1 flex rounded-lg 
+     transition-all hover:text-green-900 hover:bg-green-300  ">
      
         
-        <div   v-if="props.icon == 'custicon'">
+        <div   v-if="icon == 'custicon'">
         <custicon />
         </div>
-        <div    v-if="props.icon=='homeicon'">
+        <div    v-if="icon == 'homeicon'">
         <homeicon />
         </div>
-        <div   v-if="props.icon=='inventicon'">
+        <div   v-if="icon == 'inventicon'">
         <inventicon />
         </div>
-        <div   v-if="props.icon=='invoiceicon'">
+        <div   v-if="icon == 'invoiceicon'">
         <invoiceicon />
         </div>
        
        <div class="w-7 "></div>
-        
-
-        <v-h3   >{{ title }}</v-h3>
     
 
+        <VH3>{{ title }}</VH3>
+    </a>
     </router-link>
 </template>
