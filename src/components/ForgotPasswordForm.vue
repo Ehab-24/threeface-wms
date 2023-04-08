@@ -1,9 +1,7 @@
 <script setup lang="ts">
 
-import { Router, useRouter } from 'vue-router';
 import handleForgotPassword from '../composables/auth/handleForgotPassword';
 
-const router: Router = useRouter();
 const onSubmit = (e: any) => handleForgotPassword(e);
 
 </script>
