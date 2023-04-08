@@ -4,7 +4,7 @@ import { defineProps } from 'vue'
 
 import VH3 from './VH3.vue'
 
-const props = defineProps({
+defineProps({
     title: {
         type: String,
         required: true
@@ -24,11 +24,11 @@ const props = defineProps({
 
 
 <template>
-    <router-link :to='link' class="h-min px-4 py-2 my-1 flex rounded-lg hover:bg-gray-300 transition-all">
+    <router-link :to='link' class="h-min px-4 py-2 my-1 flex rounded-lg bg-gray-900 dark:bg-white bg-opacity-0 dark:bg-opacity-0 hover:bg-opacity-10 transition-all">
 
         <div class="w-6 h-6 bg-gray-500">ico</div>
 
-        <div class="w-16"></div>
+        <div class="w-12"></div>
 
         <v-h3>{{ title }}</v-h3>
 

@@ -28,7 +28,7 @@ const val = computed(() => {
 
 
 <template>
-    <div class=" w-36 h-min flex flex-col items-start shadow-sm bg-gray-200 rounded-2xl p-4">
+    <div class=" w-36 h-min flex flex-col items-start shadow-sm bg-gray-200 dark:bg-gray-900 rounded-2xl p-4">
 
         <div class="w-6 h-6 mb-4 bg-gray-500">ico</div>
 

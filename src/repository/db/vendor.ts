@@ -1,9 +1,9 @@
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "./index.js";
 
-const createVendor = async (id: string): Promise<void> => {
+const createVendor = async (id: string ): Promise<void> => {
   try {
-    await setDoc(doc(db, "vendors", id), {});
+    await setDoc(doc(db, "vendors", id ), {});
   } catch (error: any) {
     // ! dev only
     console.error("Error creating vendor: ", error);
@@ -12,7 +12,7 @@ const createVendor = async (id: string): Promise<void> => {
   }
 };
 
-const getVendor = async (id: any): Promise<Vendor> => {
+const getVendor = async (id: any ): Promise<Vendor> => {
   const docSnap = await getDoc(doc(db, "vendors", id));
 
   const data = docSnap.data();

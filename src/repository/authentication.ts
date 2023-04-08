@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   updateProfile,
+  User
 } from "firebase/auth";
 
 import app from "./db";
@@ -18,13 +19,13 @@ const getUserState = async (): Promise<User> => {
   return user as User;
 };
 
-const updateUser = async (profile: User): Promise<void> => {
+const updateUser = async (profile: {name: string, photoURL: string}): Promise<void> => {
   try {
     const auth: Auth = getAuth();
 
     await updateProfile(auth.currentUser!, {
       displayName: profile.name,
-      photoURL: profile.imageUrl,
+      photoURL: profile.photoURL,
     });
   } catch (error: any) {
     throw new Error(error.message);
