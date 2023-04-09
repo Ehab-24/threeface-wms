@@ -6,7 +6,7 @@ import type { Product } from "../types/Product";
 
 import { getUserState } from "../repository/authentication";
 
-const product: Ref<Product> = ref({ name: "", price: 0, quantity: 0 });
+const product: Ref<Product> = ref({ name: "", price: 0, quantity: 0 , createdAt: new Date() });
 
 const user:any = await getUserState();
 
