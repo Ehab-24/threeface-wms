@@ -1,36 +1,24 @@
 <script setup lang="ts">
 
-import { Invoice } from '@/types/Invoice';
-import { Timestamp } from '@firebase/firestore';
+import app from '../repository/db';
+import { getInvoices } from '../repository/db/invoice';
+import { Invoice } from '../types/Invoice';
+import { User, getAuth } from '@firebase/auth';
 import { Ref, ref } from 'vue';
 import DataTable from './DataTable.vue';
+import VSpinner from './VSpinner.vue';
 
-const invoices: Ref<Invoice[]> = ref([
-    {
-        customer: 'John Doe',
-        totalAmount: 100,
-        numProducts: 2,
-        createdAt: Timestamp.fromMillis(1581038066072),
-    },
-    {
-        customer: 'Kolbe Kyler',
-        totalAmount: 3000,
-        numProducts: 7,
-        createdAt: Timestamp.fromMillis(1641038066072),
-    },
-    {
-        customer: 'Hella Doe',
-        totalAmount: 1100,
-        numProducts: 4,
-        createdAt: Timestamp.fromMillis(1621038066072),
-    },
-]);
+let invoices: Ref<Invoice[]> = ref([]);
+
+const user: User | null = getAuth(app).currentUser; 
+getInvoices(user!.uid)
+.then((data) => invoices.value = data);
 
 </script>
 
 <template>
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable :headers="['Customer', 'Total', 'no. of Products', 'Date', '']">
+    <DataTable v-if="invoices.length" :headers="['Customer', 'Total', 'no. of Products', 'Date', '']">
         <template #body>
             <tr v-for="invoice in invoices" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -51,4 +39,5 @@ const invoices: Ref<Invoice[]> = ref([
             </tr>
         </template>
     </DataTable>
+    <v-spinner v-else class="w-full grid place-items-center"/>
 </template>

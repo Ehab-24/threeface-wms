@@ -6,6 +6,8 @@ import {
   deleteDoc,
   doc,
   DocumentData,
+  getDocs,
+  QuerySnapshot,
   setDoc,
 } from "firebase/firestore";
 import { db } from ".";
@@ -54,4 +56,23 @@ export async function updateInvoice(invoice: Invoice): Promise<void> {
 
     throw new Error(error.message);
   }
+}
+
+export async function getInvoices(vendorId: string): Promise<Invoice[]> {
+    try {
+        const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(
+            collection(db, "vendors", vendorId, "invoices")
+        );
+        const invoices: Invoice[] = [];
+        querySnapshot.forEach((doc) => {
+            invoices.push(doc.data() as Invoice);
+        });
+        return invoices;
+    }
+    catch (error: any) {
+        // ! dev only
+        console.error("Error updating invoice: ", error);
+    
+        throw new Error(error.message);
+    }
 }
