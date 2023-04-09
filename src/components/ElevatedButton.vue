@@ -1,10 +1,6 @@
-<script setup lang="ts">
-</script>
-
-
 <template>
     <button
-        class="w-24 h-9 rounded-md bg-pink-600 hover:bg-pink-500 text-sm text-white shadow-md hover:shadow-lg font-bold transition-all"
+        class="h-9 px-4 rounded-md bg-green-600 hover:bg-green-500 text-sm text-white shadow-md hover:shadow-lg font-bold transition-all"
         v-bind="$attrs">
         <slot>Button</slot>
     </button>
