@@ -11,14 +11,17 @@ const pushProfilePage = () => router.push('/profile');
 
 
 <template>
-    <div class="h-16 px-8 flex justify-between items-center border-b-2 dark:border-b-gray-900 bg-white dark:bg-gray-800 shadow-lg">
+
+    
+
+    <div class="h-16 px-8 flex  justify-between items-center border-b-2 dark:border-b-gray-900 bg-white dark:bg-gray-800 shadow-lg">
 
         <div class="flex items-center">
 
             <router-link to="/" class="text-xl">
                 LOGO
             </router-link>
-
+             
             <div class="w-16"></div>
 
             <TextField placeholder="Search" />
@@ -29,3 +32,6 @@ const pushProfilePage = () => router.push('/profile');
 
     </div>
 </template>
+
+
+  

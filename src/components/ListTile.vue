@@ -1,15 +1,8 @@
 <script setup lang="ts">
-
 import { defineProps } from 'vue'
-
-import VH3 from './VH3.vue'
 
 defineProps({
     title: {
-        type: String,
-        required: true
-    },
-    icon: {
         type: String,
         required: true
     },
@@ -24,13 +17,16 @@ defineProps({
 
 
 <template>
-    <router-link :to='link' class="h-min px-4 py-2 my-1 flex rounded-lg bg-gray-900 dark:bg-white bg-opacity-0 dark:bg-opacity-0 hover:bg-opacity-10 transition-all">
+    <router-link :to='link'
+        class="h-min px-4 py-2 my-1 flex rounded-lg bg-opacity-0 dark:bg-opacity-0 bg-black dark:bg-white hover:bg-opacity-5 text-black dark:text-gray-200 hover:text-green-600 transition-all">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <slot name="icon"></slot>
+        </svg>
 
-        <div class="w-6 h-6 bg-gray-500">ico</div>
+        <div class="w-7 "></div>
 
-        <div class="w-12"></div>
-
-        <v-h3>{{ title }}</v-h3>
-
+        <p class="text-md font-medium tracking-wide">
+            {{ title }}
+        </p>
     </router-link>
 </template>

@@ -12,5 +12,4 @@ const createVendor = async (id: string ): Promise<void> => {
   }
 };
 
-
 export { createVendor };
