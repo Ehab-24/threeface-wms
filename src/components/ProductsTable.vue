@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Product } from '@/types';
 import { User, getAuth } from '@firebase/auth';
-import DataTable from './DataTable.vue';
-import app from '../repository/db';
 import { getProducts } from '../repository/db/product';
 import { Ref, ref } from 'vue';
+import app from '../repository/db';
+import DataTable from './DataTable.vue';
+import VSpinner from './VSpinner.vue';
 
 const user: User | null = getAuth(app).currentUser;
 
@@ -41,6 +42,5 @@ getProducts(user!.uid)
         </template>
     </DataTable>
     
-    <!-- TODO: Add a spinner -->
-    <div v-else class="w-full grid place-items-center p-4 text-xl"> spinner </div>
+    <v-spinner v-else class="w-full grid place-items-center"/>
 </template>
