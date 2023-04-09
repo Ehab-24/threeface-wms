@@ -12,22 +12,4 @@ const createVendor = async (id: string ): Promise<void> => {
   }
 };
 
-const getVendor = async (id: string ): Promise<Vendor> => {
-  const docSnap = await getDoc(doc(db, "vendors", id));
-
-  const data = docSnap.data();
-  try {
-    if (data) {
-      return data as Vendor;
-    } else {
-      throw new Error("No such document!");
-    }
-  } catch (error: any) {
-    // ! dev only
-    console.error("Error getting vendor: ", error);
-
-    throw new Error(error.message);
-  }
-};
-
-export { createVendor, getVendor };
+export { createVendor };
