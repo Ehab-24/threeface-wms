@@ -1,52 +1,46 @@
 <script setup lang="ts">
+import { Product } from '@/types';
+import { User, getAuth } from '@firebase/auth';
+import DataTable from './DataTable.vue';
+import app from '../repository/db';
+import { getProducts } from '../repository/db/product';
+import { Ref, ref } from 'vue';
 
-import { getUserState } from "../repository/authentication";
-import {getProduct} from "../repository/db/product";
-import { Product } from "../types/Product";
+const user: User | null = getAuth(app).currentUser;
 
-const user: any = await getUserState();
-const products:Product[] = await getProduct(user.uid)
+const products: Ref<Product[]> = ref([]);
+getProducts(user!.uid)
+.then((data) => products.value = data);
 
 </script>
 
 <template>
+    <!-- TODO: Exception handling using error boundaries -->
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Product name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Quantity
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="Productx in products">
+    <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
+    <DataTable v-if="products.length" :headers="['Name', 'Price', 'Quantity', 'Created At', '']">
+        <template #body>
+            <tr v-for="product in products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ Productx.name }}
+                    {{ product.name }}
                 </th>
-                <td class="px-6 py-4">
-                    {{ Productx.quantity }}
+                <td class="px-6 py-4 font-extrabold text-green-900">
+                    ${{ product.price }}
                 </td>
                 <td class="px-6 py-4">
-                    {{Productx.price}}
+                    {{ product.quantity }}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" >Delete</a>
+                    {{ product.createdAt }}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline">Edit</a>
                 </td>
             </tr>
-        </tbody>
-    </table>
-</div>
 
-
+        </template>
+    </DataTable>
+    
+    <!-- TODO: Add a spinner -->
+    <div v-else class="w-full grid place-items-center p-4 text-xl"> spinner </div>
 </template>

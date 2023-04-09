@@ -1,4 +1,3 @@
-type Vendor = {
-    id: string,
-    
-}
+// export type Vendor = {
+//     id: string,
+// }

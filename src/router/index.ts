@@ -29,7 +29,7 @@ const routes = [
       {
         path: "/inventory",
         name: "inventory",
-        component: () => import("../views/InventoryPage.vue"),
+        component: () => import("../views/ProductsPage.vue"),
       },
       {
         path: "/invoice",
