@@ -4,7 +4,7 @@
 
 <template>
     <button
-        class="w-24 h-9 rounded-md bg-pink-600 hover:bg-pink-500 text-sm text-white shadow-md hover:shadow-lg font-bold transition-all"
+        class="w-36 h-10 rounded-md bg-gray-600 hover:text-green-900 hover:bg-green-300 text-sm text-white shadow-md hover:shadow-lg font-bold transition-all"
         v-bind="$attrs">
         <slot>Button</slot>
     </button>

@@ -1,0 +1,8 @@
+<script setup lang="ts"></script>
+<template>
+
+<svg class="h-8 w-8 text-white bg-opacity-6 bg-green-200 py-1 px-1 
+    hover:text-green-500 hover:bg-gray-500 hover:fill-transparent hover:bg-white fill-green-600 rounded-lg"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <path d="M16 3.13a4 4 0 0 1 0 7.75" />  <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+</template>
+<!-- <svg class="h-8 w-8 text-white bg-opacity-6 bg-green-200 py-1 px-1 
+    hover:text-green-500 hover:bg-gray-500 hover:fill-transparent hover:bg-white fill-green-600 rounded-lg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg> -->

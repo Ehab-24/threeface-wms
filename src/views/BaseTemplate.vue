@@ -8,23 +8,22 @@ import Sidebar from '../components/Sidebar.vue';
 
 <template>
 
-    <div class="h-[96%] bg-gray-200">
+    
 
-    <div class="h-screen bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
-
+    <div class="md:h-[100%] bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
         <Titlebar />
 
-        <div class="flex min-h-[calc(100%-64px)]">
+        <div class="md:flex min-h-[calc(100%-64px)]">
 
             <Sidebar />
              
             <!-- router-view when user is authenticated -->
-            <div class="w-full px-8 py-4">
+            <div class="w-full  ">
                 <router-view />
 
                 
             </div>
         </div>
     </div>
-    </div>
+    
 </template>
