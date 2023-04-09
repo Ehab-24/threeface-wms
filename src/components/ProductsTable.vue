@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Product } from '@/types';
+import { Product } from '../types';
 import { User, getAuth } from '@firebase/auth';
 import { getProducts } from '../repository/db/product';
 import { Ref, ref } from 'vue';
