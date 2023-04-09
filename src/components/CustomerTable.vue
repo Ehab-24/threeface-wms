@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Customer } from '@/types';
+import { Customer } from '../types';
 import DataTable from './DataTable.vue';
 
 // Customers will be fetched from repository
