@@ -160,31 +160,37 @@ import PageHeader from '../components/PageHeader.vue';
                                 <template #icon>
                                     <svg class="h-8 w-8 text-white bg-opacity-6 bg-red-200 py-1.5 px-1.5 fill-red-600 rounded-lg"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <path
-                                            d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" />
-                                        <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" />
-                                        <circle cx="15" cy="9" r="1" />
-                                    </svg>
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" />
+                                    <path
+                                        d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" />
+                                    <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" />
+                                    <circle cx="15" cy="9" r="1" />
+                                </svg>
                                 </template>
                             </MiniCard>
                         </div>
                     </div>
                 </template>
             </card>
-            <card2 title="Product Details">
+            <card title="Product Details">
                 <template #body>
-                    <div class="flex gap-5">
-                        <div class="flex flex-col w-max ">
-                            <rectcard content="Low stock items" :value=312 />
-                            <rectcard content="Item group" :value=1331 />
-                            <rectcard content="No. of items" :value=16000 />
+                    <div class="w-96">
+                        <div class="pb-4 pt-3 border-b-2 dark:border-gray-700 flex justify-between">
+                            <p>Low stock items</p>
+                            <p>312</p>
                         </div>
-
+                        <div class="pb-4 pt-3 border-b-2 dark:border-gray-700 flex justify-between">
+                            <p>Item group</p>
+                            <p>1.3k</p>
+                        </div>
+                        <div class="pt-3 flex justify-between">
+                            <p>No. of items</p>
+                            <p>1.6k</p>
+                        </div>
                     </div>
                 </template>
-            </card2>
+            </card>
             <card title="No. of Users">
                 <template #body>
                     <div class="flex gap-5">

@@ -1,8 +1,0 @@
-<script setup lang="ts"></script>
-<template>
-    <svg class="h-8 w-8 text-white bg-opacity-6 bg-red-200 py-1 px-1 fill-red-500 rounded-lg " viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
-        <line x1="15" y1="9" x2="9" y2="15" />
-    <line x1="9" y1="9" x2="15" y2="15" />
-</svg></template>

@@ -18,7 +18,7 @@ defineProps({
 
 <template>
     <router-link :to='link'
-        class="h-min px-4 py-2 my-1 flex rounded-lg bg-black dark:bg-white bg-opacity-0 hover:bg-opacity-5 text-black dark:text-gray-200 hover:text-green-600 transition-all">
+        class="h-min px-4 py-2 my-1 flex rounded-lg bg-opacity-0 dark:bg-opacity-0 bg-black dark:bg-white hover:bg-opacity-5 text-black dark:text-gray-200 hover:text-green-600 transition-all">
         <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <slot name="icon"></slot>
         </svg>
