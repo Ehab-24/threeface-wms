@@ -5,6 +5,9 @@ import MiniCard from '../components/MiniCard.vue';
 import VH1 from '../components/VH1.vue';
 import rectcard from '../components/RectCard.vue';
 import card2 from '../components/Card2.vue';
+import PageHeader from '../components/PageHeader.vue';
+
+
 
 </script>
 
@@ -14,15 +17,7 @@ import card2 from '../components/Card2.vue';
 <template >
 <div class="flex flex-col ">
 
-    <div class="h-16 flex px-8 flex  justify-between items-center border-b-2 dark:border-b-gray-900 bg-white dark:bg-gray-800 shadow-lg">
-
-        <div class="flex items-center">
-            <v-h1>HomePage</v-h1>
-        </div>
-        <div class="flex gap-5">
-            <ibutton>Month to Date</ibutton><ibutton>Year to Date</ibutton><ibutton>Export</ibutton>
-        </div>
-    </div>
+    <PageHeader title="HomePage"></PageHeader>
 
         <div class="h-4  "></div>
 <div class="flex flex-row">
@@ -33,7 +28,7 @@ import card2 from '../components/Card2.vue';
                 <div class="flex gap-20">
                     <div class="flex flex-col w-min">
                         <MiniCard title="Sale" icon="sale" :value=240 />
-                        <div class="h-4"></div>
+                                <div class="h-4"></div>
                         <MiniCard title="Cost" icon="cost" :value=1200 />
                         
                     </div>

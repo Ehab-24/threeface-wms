@@ -1,14 +1,14 @@
 <script setup lang="ts">
-
+import PageHeader from '../components/PageHeader.vue';
 import VH1 from '../components/VH1.vue';
 import CustomerTable from '../components/CustomerTable.vue';
 </script>
 
 <template>
-        <v-h1> Customer Logs </v-h1>
+   
 
-        
-       <customertable></customertable>
+           
+  <PageHeader  title="Customers"></PageHeader>
 
 
        <CustomerTable />

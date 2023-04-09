@@ -2,7 +2,6 @@
 
 import TextField from './TextField.vue';
 import IconButton from './IconButton.vue';
-import handleSignout from '../composables/auth/handleSignout';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

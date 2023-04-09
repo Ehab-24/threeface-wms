@@ -40,40 +40,18 @@ const val = computed(() => {
 <template>
     <div class=" md:w-max md:h-min flex flex-row items-start shadow-sm bg-gray-200 dark:bg-gray-900 rounded-2xl p-5">
 
-        <div   v-if="icon == 'sale'">
-        <saleicon />
-        </div>
-        <div    v-if="icon == 'revenue'">
-        <revenueicon/>
-        </div>
-        <div   v-if="icon == 'cost'">
-        <costicon />
-        </div>
-        <div   v-if="icon == 'profit'">
-        <profiticon />
-        </div>
-        <div   v-if="icon == 'cancel'">
-        <cancelicon />
-        </div>
-        <div   v-if="icon == 'return'">
-        <returnicon />
-        </div>
-        <div   v-if="icon == 'purchase'">
-        <purchaseicon />
-        </div>
-        <div   v-if="icon == 'reach'">
-        <rocketicon />
-        </div>
-        <div   v-if="icon == 'Qin'">
-        <Qinicon />
-        </div>
-        <div   v-if="icon == 'cust'">
-        <custicon2 />
-        </div>
-        <div   v-if="icon == 'supp'">
-        <suppicon />
-        </div>
-        <div class="w-7"></div>
+        <saleicon v-if="icon === 'sale'" />
+    <revenueicon v-else-if="icon === 'revenue'" />
+    <costicon v-else-if="icon === 'cost'" />
+    <profiticon v-else-if="icon === 'profit'" />
+    <cancelicon v-else-if="icon === 'cancel'" />
+    <returnicon v-else-if="icon === 'return'" />
+    <purchaseicon v-else-if="icon === 'purchase'" />
+    <rocketicon v-else-if="icon === 'reach'" />
+    <Qinicon v-else-if="icon === 'Qin'" />
+    <custicon2 v-else-if="icon === 'cust'" />
+    <suppicon v-else-if="icon === 'supp'" />
+               <div class="w-7"></div>
 <div class="flex flex-col">
     <VB1 >{{ title }}</VB1>
 
