@@ -1,9 +1,12 @@
 import { Product } from "../../types/Product";
-import { getDocs, collection ,addDoc} from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "./index";
 
-export const createProduct = async (id:string , product:Product):Promise<void> => {
-  const productsRef = collection(db, "vendors",id, "products");
+export const createProduct = async (
+  id: string,
+  product: Product
+): Promise<void> => {
+  const productsRef = collection(db, "vendors", id, "products");
   await addDoc(productsRef, product);
 };
 

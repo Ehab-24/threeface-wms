@@ -14,13 +14,13 @@ const product: Ref<Product> = ref({
 
 const user: any = await getUserState();
 
-const add = async (): Promise<void> => {
+const add = async (id:any): Promise<void> => {
   createProduct(user.uid, product.value);
 };
 </script>
 
 <template>
-  <form @submit.prevent="() => add">
+  <form @submit.prevent="() => add(user.uid)">
     <div>
       <label
         for="name"
