@@ -18,7 +18,7 @@ defineProps<{
                 </tr>
             </thead>
             <tbody>
-                <slot></slot>
+                <slot name="body"></slot>
             </tbody>
         </table>
     </div>
