@@ -5,12 +5,7 @@ import CustomerTable from '../components/CustomerTable.vue';
 </script>
 
 <template>
-   
+  <PageHeader title="Customers"></PageHeader>
 
-           
-  <PageHeader  title="Customers"></PageHeader>
-
-
-       <CustomerTable />
-
+  <CustomerTable />
 </template>
