@@ -1,4 +1,6 @@
 export type Customer = {
-    name: string;
-    createdAt: Date;
+    name: string,
+    totalSpent: number,
+    numPurchases: number,
+    lastPurchase: Date
 }
