@@ -15,6 +15,7 @@ defineProps<{
                     <th v-for="header in headers" :key="header" scope="col" class="px-6 py-3">
                         {{ header }}
                     </th>
+                    <button class="px-2 text-3xl grid dark:bg-white bg-black bg-opacity-0 hover:bg-opacity-20 rounded-full transition-all">+</button>
                 </tr>
             </thead>
             <tbody>
