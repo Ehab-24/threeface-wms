@@ -5,7 +5,7 @@ import VH1 from '../components/VH1.vue';
 
 <template>
     <div
-        class="h-16 flex px-4 mb-4 justify-between items-center border-b-2 dark:border-b-gray-700">
+        class="h-16  flex px-4 mb-4 justify-between items-center border-b-2 dark:border-b-gray-700">
 
         <div class="flex items-center">
             <v-h1>

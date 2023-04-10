@@ -10,7 +10,7 @@ import Sidebar from '../components/Sidebar.vue';
 
     
 
-    <div class="h-screen bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div class="h-[100%] w-[100%] bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
         <Titlebar />
 
         <div class="md:flex min-h-[calc(100%-64px)]">

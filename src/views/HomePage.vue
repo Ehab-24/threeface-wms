@@ -19,7 +19,7 @@ import PageHeader from '../components/PageHeader.vue';
 
         <PageHeader>Home</PageHeader>
 
-        <div class="flex flex-row">
+        <div class="flex flex-row ">
             <card title="Sales Overview ">
                 <template #body>
 

@@ -6,7 +6,7 @@ import { db } from "./index";
 export const getCustomers = async (id: any): Promise<Customer[]> => {
   let Customers: Customer[] = [];
   const querySnapshot = await getDocs(
-    collection(db, "vendors", id, "customers")
+    collection(db, "vendors", id, "Customers")
   );
   querySnapshot.forEach((doc) => {
     Customers.push(doc.data() as Customer);

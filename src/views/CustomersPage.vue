@@ -11,12 +11,10 @@ const pushAddCustomerPage = (): void => {
 </script>
 
 <template>
-   
+      
+  <PageHeader >Customers</PageHeader>
 
-           
-  <PageHeader  title="Customers"></PageHeader>
-
-
+<ElevatedButton @click="pushAddCustomerPage"> Add Customer </ElevatedButton>
        <CustomerTable />
 
 </template>
