@@ -2,6 +2,7 @@
 
 defineProps<{
     headers: string[],
+    onClick: () => void
 }>();
 
 </script>
@@ -17,7 +18,7 @@ defineProps<{
                     </th>
                     <th>
                         <button class="px-2 text-3xl grid dark:bg-gray-300 bg-black bg-opacity-0 dark:bg-opacity-0 hover:bg-opacity-20 rounded-full transition-all ml-4"
-                         >+</button>
+                         @click = "onClick">+</button>
                     </th>
                     
                 </tr>
