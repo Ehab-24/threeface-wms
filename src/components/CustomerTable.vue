@@ -46,7 +46,7 @@ const customers: Customer[] = [
 <template>
 
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable :headers="['Name', 'Purchases', 'Total', 'Last Purchase', '']">
+    <DataTable :headers="['Name', 'Purchases', 'Total', 'Last Purchase']">
         <template #body>
            
         
