@@ -6,6 +6,7 @@ import { Ref, ref } from 'vue';
 import app from '../repository/db';
 import DataTable from './DataTable.vue';
 import VSpinner from './VSpinner.vue';
+import { Router, useRouter } from "vue-router";
 
 const user: User | null = getAuth(app).currentUser;
 
@@ -13,13 +14,20 @@ const customers: Ref<Customer[]> = ref([]);
 getCustomers(user!.uid)
 .then((data) => customers.value = data);
 
+
+const router: Router = useRouter();
+
+const pushAddCustomerPage = (): void => {
+    router.push("/add-customer");
+};
+
 </script>
 
 
 <template>
 <div class="h-4"></div>
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase', '']">
+    <DataTable :onClick=pushAddCustomerPage v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase']">
         <template #body>
            
         
