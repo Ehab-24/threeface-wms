@@ -7,10 +7,10 @@ import type { Customer } from "../types/Customer";
 import { getUserState } from "../repository/authentication";
 
 const customer: Ref<Customer> = ref({   
-    name: "string",
+  name: "",
     totalSpent: 0,
     numPurchases:0,
-    lastPurchase : "",});
+    lastPurchase : new Date(),});
 
 const user:any = await getUserState();
 
@@ -35,7 +35,7 @@ const createCustomer = async (id:string):Promise<void> => {
       <input
         id="name"
         v-model="customer.name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
+        class="bg-gray-50 w-1/4 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
         placeholder="Customer Name"
         required=true
       />
@@ -49,7 +49,7 @@ const createCustomer = async (id:string):Promise<void> => {
       <input
         id="totalSpent"
         v-model="customer.totalSpent"
-        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-pink-500 dark:focus:border-pink-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-pink-500 dark:focus:border-pink-500"
         placeholder="#$1000"
         required=true
       />
@@ -62,23 +62,8 @@ const createCustomer = async (id:string):Promise<void> => {
       <input
         id="numPurchases"
         v-model="customer.numPurchases"
-        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-pink-500 dark:focus:border-pink-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-pink-500 dark:focus:border-pink-500"
         placeholder="#10"
-        required=true
-      />
-        
-    </div>
-    <div>
-      <label
-        for="lastPurchase"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-50"
-        >Last Purchase</label
-      >
-      <input
-        id="lastPurchase"
-        v-model="customer.lastPurchase"
-        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-pink-500 dark:focus:border-pink-500"
-        placeholder="10/10/2021"
         required=true
       />
         

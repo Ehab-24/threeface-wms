@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import PageHeader from "../components/PageHeader.vue";
-import ElevatedButton from "../components/ElevatedButton.vue";
-import { Router, useRouter } from "vue-router";
 import BigCard from "../components/BigIconCard.vue";
 import ProductsTable from "../components/ProductsTable.vue";
 
-const router: Router = useRouter();
-
-const pushAddProductPage = (): void => {
-  router.push("/add-product");
-};
 </script>
 
 <template>
@@ -33,8 +26,6 @@ const pushAddProductPage = (): void => {
         <BigCard title="Net Stock Value" :value="84260"></BigCard>
       </div>
     </div>
-
-    <elevated-button @click="pushAddProductPage"> Add Product </elevated-button>
   </div>
 
   <div class="mt-4">
