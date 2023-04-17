@@ -1,0 +1,14 @@
+{
+  "name": "wms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "(cd server && npm run dev) & (cd client && npm run dev)",
+    "start": "(tsc && node dist/index.js) & (cd client && npm run build)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
