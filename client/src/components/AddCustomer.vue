@@ -1,15 +1,15 @@
 <script setup lang = "ts">
 
-import ProductForm from './AddProductForm.vue';
+import CustomerForm from './AddCustomerForm.vue';
 import VH1 from './VH1.vue';
 
 </script>
 
 
 <template>
-    <VH1>Add Product</VH1>
+    <VH1>Add Customer</VH1>
     <Suspense>
-        <ProductForm/>
+        <CustomerForm/>
     </Suspense>
 
 </template>
