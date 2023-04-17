@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import PageHeader from '../components/PageHeader.vue';
 import VH1 from '../components/VH1.vue';
 import InvoiceTable from '../components/InvoiceTable.vue';
 import { Invoice } from '@/types';
@@ -10,7 +10,9 @@ const invoices: Ref<Invoice[]> = ref([]);
 </script>
 
 <template>
-    <v-h1>Invoice Page</v-h1>
+     <PageHeader >Invoice</PageHeader>
+
 
     <invoice-table />
+
 </template>

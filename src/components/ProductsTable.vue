@@ -6,6 +6,7 @@ import { Ref, ref } from 'vue';
 import app from '../repository/db';
 import DataTable from './DataTable.vue';
 import VSpinner from './VSpinner.vue';
+import { Router, useRouter } from "vue-router";
 
 const user: User | null = getAuth(app).currentUser;
 
@@ -13,13 +14,21 @@ const products: Ref<Product[]> = ref([]);
 getProducts(user!.uid)
 .then((data) => products.value = data);
 
+const router: Router = useRouter();
+
+const pushAddProductPage = (): void => {
+  router.push("/add-product");
+};
+
+
+
 </script>
 
 <template>
     <!-- TODO: Exception handling using error boundaries -->
 
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable v-if="products.length" :headers="['Name', 'Price', 'Quantity', 'Created At', '']">
+    <DataTable :onClick=pushAddProductPage v-if="products.length" :headers="['Name', 'Price', 'Quantity', 'Created At']">
         <template #body>
             <tr v-for="product in products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

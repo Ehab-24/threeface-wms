@@ -1,7 +1,7 @@
 <script setup lang = "ts">
 
-import ProductForm from '../components/AddProductForm.vue';
-import VH1 from '../components/VH1.vue';
+import ProductForm from './AddProductForm.vue';
+import VH1 from './VH1.vue';
 
 </script>
 
