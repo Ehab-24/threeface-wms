@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import PageHeader from "../components/PageHeader.vue";
+import BigCard from "../components/BigIconCard.vue";
+import ProductsTable from "../components/ProductsTable.vue";
+
+</script>
+
+<template>
+  <PageHeader>Inventory</PageHeader>
+
+  <div class="h-4"></div>
+
+  <div class="flex flex-col items-start">
+    <div class="mb-12 flex flex-row gap-4">
+      <div class="basis-1/4">
+        <BigCard title="Total Products" :value="6700"></BigCard>
+      </div>
+      <div class="basis-1/4">
+        <BigCard title="In Stock Products" :value="12"></BigCard>
+      </div>
+
+      <div class="basis-1/4">
+        <BigCard title="Out of Stock Products" :value="3"></BigCard>
+      </div>
+      <div class="basis-1/4">
+        <BigCard title="Net Stock Value" :value="84260"></BigCard>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <ProductsTable />
+  </div>
+</template>
