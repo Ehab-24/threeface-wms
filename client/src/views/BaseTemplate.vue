@@ -10,14 +10,14 @@ import Sidebar from '../components/Sidebar.vue';
 
     
 
-    <div class="h-screen w-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div class="h-full lg:w-full md:w-max sm:w-max bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-700 text-gray-900 dark:text-white">
         <Titlebar />
 
-        <div class="md:flex min-h-[calc(100%-64px)]">
+        <div class="flex min-h-[calc(100%-64px)]">
 
             <Sidebar />
              
-            <!-- router-view when user is authenticated -->
+      
             <div class="w-full px-8 py-4">
                 <router-view />   
             </div>

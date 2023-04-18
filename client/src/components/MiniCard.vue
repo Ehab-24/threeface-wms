@@ -23,7 +23,7 @@ const val = computed(() => {
 
 
 <template>
-    <div class=" md:w-max md:h-min flex flex-row items-start shadow-sm bg-gray-200 dark:bg-gray-900 rounded-2xl p-5">
+    <div class=" md:w-max md:h-min flex flex-row items-start shadow-sm bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-5">
 
         <slot name="icon"></slot>
 

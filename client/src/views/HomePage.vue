@@ -19,11 +19,11 @@ import PageHeader from '../components/PageHeader.vue';
 
         <PageHeader>Home</PageHeader>
 
-        <div class="flex flex-row ">
+        <div class="flex lg:flex-row md:flex-col md:gap-3 sm:flex-col sm:gap-3">
             <card title="Sales Overview ">
                 <template #body>
 
-                    <div class="flex gap-20">
+                    <div class="flex lg:flex-row md:flex-row sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
                         <div class="flex flex-col w-min">
                             <MiniCard title="Sale" :value=240>
                                 <template #icon>
@@ -76,7 +76,7 @@ import PageHeader from '../components/PageHeader.vue';
             <div class="w-6"></div>
             <card title="Puchase Overview">
                 <template #body>
-                    <div class="flex gap-20">
+                    <div class="flex lg:flex-row md:flex-row sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
                         <div class="flex flex-col w-min">
                             <MiniCard title="Purchases" :value=240>
                                 <template #icon>
