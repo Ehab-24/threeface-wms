@@ -15,7 +15,7 @@ defineProps({
 
 <template>
 
-    <div class="md:w-max  md:h-min sm:w-min  sm:h-min shadow-lg bg-white dark:bg-gradient-to-r from-gray-900 to-gray-500 rounded-2xl px-6 py-4">
+    <div class="md:w-max  md:h-min sm:w-min  sm:h-min shadow-lg bg-white dark:bg-gray-800 rounded-2xl px-6 py-4">
 
         <v-h1 class="pb-4">{{ title }}</v-h1>
         
