@@ -4,7 +4,15 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { UserModel } from '../models';
 
-const login = async (req: Request, res: Response): Promise<void> => {
+export function defaultRoute(req: UserRequest, res: Response): void {
+  res.status(200).json({
+    success: true,
+    authorized: true,
+    user: req.user
+  });
+}
+
+export async function login(req: Request, res: Response): Promise<void> {
   try {
     const payload = req.body;
     const user = await UserModel.findOne({ email: payload.email });
@@ -29,7 +37,7 @@ const login = async (req: Request, res: Response): Promise<void> => {
         warehouse: user.warehouse
       },
       process.env.SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '12h' }
     );
 
     const lastLogin: Date = new Date();
@@ -57,9 +65,9 @@ const login = async (req: Request, res: Response): Promise<void> => {
       error
     });
   }
-};
+}
 
-const register = async (req: Request, res: Response): Promise<void> => {
+export async function register(req: Request, res: Response): Promise<void> {
   try {
     const payload = req.body;
 
@@ -91,7 +99,7 @@ const register = async (req: Request, res: Response): Promise<void> => {
         warehouse: user.warehouse
       },
       process.env.SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '12h' }
     );
 
     res.status(201).json({
@@ -116,6 +124,4 @@ const register = async (req: Request, res: Response): Promise<void> => {
       error
     });
   }
-};
-
-export { login, register };
+}

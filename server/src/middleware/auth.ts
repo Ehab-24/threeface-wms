@@ -18,3 +18,15 @@ export function authenticateUser(
     res.status(401).send('Unauthorized');
   }
 }
+
+export function isLoggedIn(
+  req: UserRequest,
+  res: Response,
+  next: NextFunction
+): void {
+  if (req.user) {
+    next();
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+}
