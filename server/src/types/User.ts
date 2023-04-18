@@ -7,4 +7,5 @@ export type User = {
   token?: string;
   createdAt?: Date;
   lastLogin?: Date;
+  role?: string;
 };

@@ -37,7 +37,7 @@ export async function login(req: Request, res: Response): Promise<void> {
         warehouse: user.warehouse
       },
       process.env.SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '12h' }
     );
 
     const lastLogin: Date = new Date();
@@ -99,7 +99,7 @@ export async function register(req: Request, res: Response): Promise<void> {
         warehouse: user.warehouse
       },
       process.env.SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '12h' }
     );
 
     res.status(201).json({

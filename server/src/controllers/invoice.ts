@@ -4,28 +4,28 @@ import { UserRequest } from '../interfaces';
 const read = (req: UserRequest, res: Response): void => {
   res.status(200).json({
     success: true,
-    message: 'Product read successfully'
+    message: 'Invoice read successfully'
   });
 };
 
 const create = (req: UserRequest, res: Response): void => {
   res.status(201).json({
     success: true,
-    message: 'Product created successfully'
+    message: 'Invoice created successfully'
   });
 };
 
 const update = (req: UserRequest, res: Response): void => {
   res.status(200).json({
     success: true,
-    message: 'Product updated successfully'
+    message: 'Invoice updated successfully'
   });
 };
 
 const remove = (req: UserRequest, res: Response): void => {
   res.status(204).json({
     success: true,
-    message: 'Product created successfully'
+    message: 'Invoice created successfully'
   });
 };
 
