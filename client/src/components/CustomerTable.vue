@@ -7,6 +7,7 @@ import app from '../repository/db';
 import DataTable from './DataTable.vue';
 import VSpinner from './VSpinner.vue';
 import { Router, useRouter } from "vue-router";
+import { Timestamp } from '@firebase/firestore';
 
 const user: User | null = getAuth(app).currentUser;
 
@@ -15,11 +16,16 @@ getCustomers(user!.uid)
 .then((data) => customers.value = data);
 
 
+function TimestampToDate(timestamp: Timestamp): string {
+    if (timestamp && timestamp.seconds) {
+    return new Date(timestamp.seconds * 1000).toLocaleDateString();
+  }
+    return "0";
+}
+
 const router: Router = useRouter();
 
-const pushAddCustomerPage = (): void => {
-    router.push("/add-customer");
-};
+const tType: string = "Customers";
 
 </script>
 
@@ -27,7 +33,7 @@ const pushAddCustomerPage = (): void => {
 <template>
 <div class="h-4"></div>
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable :onClick=pushAddCustomerPage v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase']">
+    <DataTable :tableType=tType v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase']">
         <template #body>
            
         
@@ -42,7 +48,7 @@ const pushAddCustomerPage = (): void => {
                 {{ customer.numPurchases }}
             </td>
             <td class="px-6 py-4">
-                {{ customer.lastPurchase }}
+                {{ TimestampToDate(customer.lastPurchase) }}
             </td>
             <td class="px-6 py-4">
                 <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline">Edit</a>

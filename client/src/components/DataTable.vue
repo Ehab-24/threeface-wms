@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { defineProps, ref } from "vue";
 import PForm from "./AddProductForm.vue";
+import CForm from "./AddCustomerForm.vue";
 import VH1 from "./VH1.vue";
 
 defineProps<{
   headers: string[];
+  tableType: string;
 }>();
 
 const isOpen = ref(false);
@@ -73,12 +75,20 @@ const cancelButtonText = ref("Cancel");
                     </svg>
                     <span class="sr-only">Close modal</span>
                   </button>
-                  <div class="px-6 py-6 lg:px-8">
+                  <div class="px-6 py-6 lg:px-8" v-if="tableType == 'Products'">
                     <div class="text-center py-4 dark:border-b dark:border-gray-600 mb-4">
                         <VH1>Add Product</VH1>
                     </div>
                     <Suspense>
                       <PForm />
+                    </Suspense>
+                  </div>
+                  <div class="px-6 py-6 lg:px-8" v-if="tableType == 'Customers'">
+                    <div class="text-center py-4 dark:border-b dark:border-gray-600 mb-4">
+                        <VH1>Add Customer</VH1>
+                    </div>
+                    <Suspense>
+                      <CForm />
                     </Suspense>
                   </div>
                 </div>

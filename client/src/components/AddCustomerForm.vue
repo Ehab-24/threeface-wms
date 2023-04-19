@@ -5,12 +5,13 @@ import ElevatedButton from "../components/ElevatedButton.vue";
 import type { Customer } from "../types/Customer";
 
 import { getUserState } from "../repository/authentication";
+import { Timestamp } from "@firebase/firestore";
 
 const customer: Ref<Customer> = ref({   
   name: "",
     totalSpent: 0,
     numPurchases:0,
-    lastPurchase : new Date(),});
+    lastPurchase : Timestamp.fromDate(new Date()),});
 
 const user:any = await getUserState();
 
