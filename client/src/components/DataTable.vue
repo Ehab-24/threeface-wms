@@ -74,7 +74,7 @@ const cancelButtonText = ref("Cancel");
                     <span class="sr-only">Close modal</span>
                   </button>
                   <div class="px-6 py-6 lg:px-8">
-                    <div class="text-center py-4">
+                    <div class="text-center py-4 dark:border-b dark:border-gray-600 mb-4">
                         <VH1>Add Product</VH1>
                     </div>
                     <Suspense>

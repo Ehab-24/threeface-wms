@@ -16,9 +16,7 @@ getProducts(user!.uid)
 
 const router: Router = useRouter();
 
-const pushAddProductPage = (): void => {
-  router.push("/add-product");
-};
+
 
 
 
@@ -28,7 +26,7 @@ const pushAddProductPage = (): void => {
     <!-- TODO: Exception handling using error boundaries -->
 
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable :onClick=pushAddProductPage v-if="products.length" :headers="['Name', 'Price', 'Quantity', 'Created At']">
+    <DataTable v-if="products.length" :headers="['Name', 'Price', 'Quantity', 'Created At']">
         <template #body>
             <tr v-for="product in products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
