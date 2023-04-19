@@ -2,7 +2,6 @@
 
 import Titlebar from '../components/Titlebar.vue';
 import Sidebar from '../components/Sidebar.vue';
-
 </script>
 
 
@@ -10,15 +9,15 @@ import Sidebar from '../components/Sidebar.vue';
 
     
 
-    <div class="h-full 2xl:h-screen xl:h-screen xl:w-screen 2xl:w-screen lg:w-max md:w-max sm:w-max bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 text-gray-900 dark:text-white">
+    <div class=" min-h-screen overflow-x-hidden  w-full bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 text-gray-900 dark:text-white">
         <Titlebar />
 
-        <div class="flex min-h-[calc(100%-64px)]">
+        <div class="flex ">
 
             <Sidebar />
              
       
-            <div class="w-full px-8 py-4">
+            <div class="  2xl:pl-10 xl:pl-10  py-4">
                 <router-view />   
             </div>
         </div>

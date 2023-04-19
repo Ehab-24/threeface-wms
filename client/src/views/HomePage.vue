@@ -8,22 +8,22 @@ import card2 from '../components/Card2.vue';
 import PageHeader from '../components/PageHeader.vue';
 
 
-
 </script>
 
 
 
 
 <template>
-    <div class="flex flex-col">
+    <div  class="flex  flex-col w-full" >
 
         <PageHeader>Home</PageHeader>
-
+    
+       <div class="flex flex-col w-full">
         <div class="flex lg:flex-row md:flex-col md:gap-3 sm:flex-col sm:gap-3">
             <card title="Sales Overview ">
                 <template #body>
 
-                    <div class="flex lg:flex-row md:flex-row sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
+                    <div class="flex justify-center items-start sm:justify-center sm:items-center  lg:flex-row md:flex-row  sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
                         <div class="flex flex-col w-min">
                             <MiniCard title="Sale" :value=240>
                                 <template #icon>
@@ -133,7 +133,7 @@ import PageHeader from '../components/PageHeader.vue';
             </card>
         </div>
         <div class="h-4"></div>
-        <div class="flex flex-row gap-4">
+        <div class="flex flex-row  gap-4">
 
             <card title="Inventory Summary">
                 <template #body>
@@ -223,5 +223,6 @@ import PageHeader from '../components/PageHeader.vue';
                 </template>
             </card>
         </div>
+       </div>
     </div>
 </template>

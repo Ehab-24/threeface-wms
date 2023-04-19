@@ -25,9 +25,9 @@ const pushAddCustomerPage = (): void => {
 
 
 <template>
-<div class="h-4"></div>
+<div class="h-4" ></div>
     <!-- * needs an empty header at the end to accomodate for 'Edit' column -->
-    <DataTable :onClick=pushAddCustomerPage v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase']">
+    <DataTable :onClick=pushAddCustomerPage v-if="customers.length" :headers="['Name', 'Purchases', 'Total', 'Last Purchase']" class="w-screen">
         <template #body>
            
         
