@@ -4,12 +4,13 @@ import ElevatedButton from "../components/ElevatedButton.vue";
 import type { Product } from "../types/Product";
 import { createProduct } from "../repository/db/product";
 import { getUserState } from "../repository/authentication";
+import { Timestamp } from "@firebase/firestore";
 
 const product: Ref<Product> = ref({
   name: "",
   price: 0,
   quantity: 0,
-  createdAt: new Date(),
+  createdAt: Timestamp.fromDate(new Date()),
 });
 
 const user: any = await getUserState();

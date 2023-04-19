@@ -7,6 +7,7 @@ import app from '../repository/db';
 import DataTable from './DataTable.vue';
 import VSpinner from './VSpinner.vue';
 import { Router, useRouter } from "vue-router";
+import { Timestamp } from '@firebase/firestore';
 
 const user: User | null = getAuth(app).currentUser;
 
@@ -16,7 +17,12 @@ getProducts(user!.uid)
 
 const router: Router = useRouter();
 
-
+function TimestampToDate(timestamp: Timestamp): string {
+    if (timestamp && timestamp.seconds) {
+    return new Date(timestamp.seconds * 1000).toLocaleDateString();
+  }
+    return "0";
+}
 
 
 
@@ -39,7 +45,7 @@ const router: Router = useRouter();
                     {{ product.quantity }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ product.createdAt }}
+                    {{ TimestampToDate(product.createdAt) }}
                 </td>
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-green-600 dark:text-green-500 hover:underline">Edit</a>
