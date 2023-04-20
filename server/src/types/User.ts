@@ -5,7 +5,9 @@ export type User = {
   displayName?: string;
   password?: string;
   token?: string;
+  photoURL?: string;
   createdAt?: Date;
   lastLogin?: Date;
   role?: string;
+  isVerified: boolean;
 };

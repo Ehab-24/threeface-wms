@@ -3,5 +3,4 @@ export type Warehouse = {
   name: string;
   address: string;
   createdAt: Date;
-  vendors: string[];
 };

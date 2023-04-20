@@ -3,10 +3,17 @@ import * as customerController from '../../../controllers/customer';
 
 const router: Router = Router();
 
-router.route('/')
-.get(customerController.read)
-.post(customerController.create)
-.patch(customerController.update)
-.delete(customerController.remove);
+router
+  .route('/:id')
+  .get(customerController.readOne)
+  .patch(customerController.updateOne)
+  .delete(customerController.removeOne);
+
+router
+  .route('/')
+  .post(customerController.createOne)
+  .get(customerController.readAll)
+  .delete(customerController.removeAll);
+
 
 export default router;
