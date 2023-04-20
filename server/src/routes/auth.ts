@@ -7,5 +7,7 @@ const router: Router = Router();
 router.get('/', authenticateUser, authController.defaultRoute);
 router.post('/login', authController.login);
 router.post('/register', authController.register);
+router.patch('/send-code', authController.sendVerificationCode);
+router.patch('/verify-code', authController.verifyCode);
 
 export default router;

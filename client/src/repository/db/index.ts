@@ -23,4 +23,4 @@ const app = initializeApp(config);
 const db = getFirestore(app);
 
 export { db };
-export default app; 
+export default app;

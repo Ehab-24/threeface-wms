@@ -16,13 +16,7 @@ const WarehouseSchema = new mongoose.Schema({
     required: true,
     default: () => Date.now(),
     immutable: true
-  },
-  vendors: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Users'
-    }
-  ]
+  }
 });
 
 export default mongoose.model('Warehouse', WarehouseSchema);
