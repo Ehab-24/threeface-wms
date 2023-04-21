@@ -1,14 +1,13 @@
 import { Response } from 'express';
 import { UserRequest } from '../interfaces';
 import { CustomerModel } from '../models';
-import { Customer } from '../types';
-import { extendPipeline } from '../global/utils';
+import { Customer, PageInfo } from '../types';
+import { extendPipeline, getPageInfo } from '../shared/utils';
 
 // **************************************************************
 // * CRUD for customers of the currently logged in user
 // ! Requests do not require 'warehouse' field
 // **************************************************************
-
 
 export async function readAll(req: UserRequest, res: Response): Promise<void> {
   try {
@@ -21,12 +20,17 @@ export async function readAll(req: UserRequest, res: Response): Promise<void> {
     }
 
     const pipeline = [{ $match: { warehouse: req.user.warehouse } }];
-    extendPipeline(pipeline, req);
+    const { limit, page }: { limit: number; page: number } = extendPipeline(
+      pipeline,
+      req
+    );
     const customers = await CustomerModel.aggregate(pipeline);
+    const pageInfo: PageInfo = getPageInfo(customers, page, limit);
 
     res.status(200).json({
       success: true,
-      data: customers
+      data: customers,
+      pageInfo
     });
   } catch (error) {
     res.status(500).json({

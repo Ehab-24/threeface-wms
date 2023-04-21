@@ -26,7 +26,6 @@ export async function sendGmail(
     to,
     from,
     subject,
-    text: 'hello',
     html
   });
 }

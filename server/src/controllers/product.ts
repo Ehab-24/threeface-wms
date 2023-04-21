@@ -1,8 +1,8 @@
 import { Response } from 'express';
 import { UserRequest } from '../interfaces';
 import { ProductModel } from '../models';
-import { Product } from '../types';
-import { extendPipeline } from '../global/utils';
+import { PageInfo, Product } from '../types';
+import { extendPipeline, getPageInfo } from '../shared/utils';
 
 // **************************************************************
 // * CRUD for products of the currently logged in user
@@ -20,12 +20,17 @@ export async function readAll(req: UserRequest, res: Response): Promise<void> {
     }
 
     const pipeline = [{ $match: { warehouse: req.user.warehouse } }];
-    extendPipeline(pipeline, req);
+    const { limit, page }: { limit: number; page: number } = extendPipeline(
+      pipeline,
+      req
+    );
     const products = await ProductModel.aggregate(pipeline);
+    const pageInfo: PageInfo = getPageInfo(products, page, limit);
 
     res.status(200).json({
       success: true,
-      data: products
+      data: products,
+      pageInfo
     });
   } catch (error) {
     res.status(500).json({
