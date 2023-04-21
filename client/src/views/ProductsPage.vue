@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PageHeader from "../components/PageHeader.vue";
 import BigCard from "../components/BigIconCard.vue";
-import ProductsTable from "../components/ProductsTable.vue";
+import DataTable from "../components/DataTable.vue";
 
 </script>
 
@@ -29,6 +29,6 @@ import ProductsTable from "../components/ProductsTable.vue";
   </div>
 
   <div class="mt-4">
-    <ProductsTable />
+    <DataTable @click="" :headers="[]" :data-records="[]"/>
   </div>
 </template>

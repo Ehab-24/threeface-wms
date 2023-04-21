@@ -18,7 +18,7 @@ export async function readAll(req: UserRequest, res: Response): Promise<void> {
       });
       return;
     }
-    
+
     const pipeline = [{ $match: { warehouse: req.user.warehouse } }];
     const { limit, page }: { limit: number; page: number } = extendPipeline(
       pipeline,
@@ -80,7 +80,8 @@ export async function createOne(
       return;
     }
 
-    const payload: Invoice & Omit<Invoice, 'warehouse' | 'createdAt'> = req.body;
+    const payload: Invoice & Omit<Invoice, 'warehouse' | 'createdAt'> =
+      req.body;
     const invoice = await InvoiceModel.create({
       ...payload,
       warehouse: req.user.warehouse

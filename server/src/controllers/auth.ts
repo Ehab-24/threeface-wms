@@ -165,6 +165,9 @@ export async function sendVerificationCode(
 
 export async function verifyCode(req: Request, res: Response): Promise<void> {
   try {
+
+    console.log(req.body)
+
     const {
       email,
       password,

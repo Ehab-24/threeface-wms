@@ -1,10 +1,21 @@
 <script setup lang="ts">
 
 import { useRouter } from 'vue-router';
-import handleLogin from '../composables/auth/handleLogin';
+import { login } from '../repository/auth';
+
+const emit = defineEmits(['signup', 'forgot-password']);
 
 const router = useRouter();
-const onSignIn = (e: any) => handleLogin(e, router);
+const handleSignIn = async (e: any): Promise<void> => {
+    const { email, password } = e.target.elements;
+    if (!email.value || !password.value) {
+        alert('Please fill in all fields');
+        return;
+    }
+    if (await login(email.value, password.value)) {
+        router.push('/');
+    }
+};
 
 </script>
 
@@ -16,10 +27,11 @@ const onSignIn = (e: any) => handleLogin(e, router);
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    <h1
+                        class="w-full flex justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account
                     </h1>
-                    <form @submit.prevent="onSignIn" class="space-y-4 md:space-y-6" action="#">
+                    <form @submit.prevent="handleSignIn" class="space-y-4 md:space-y-6" action="#">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
@@ -45,10 +57,10 @@ const onSignIn = (e: any) => handleLogin(e, router);
                                     <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
                                 </div>
                             </div>
-                            <router-link to="/forgot-password"
+                            <button @click="emit('forgot-password')"
                                 class="text-sm font-medium text-green-600 hover:underline dark:text-green-500">
                                 Forgot password?
-                            </router-link>
+                            </button>
                         </div>
                         <button type="submit"
                             class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Sign
@@ -56,10 +68,10 @@ const onSignIn = (e: any) => handleLogin(e, router);
                         </button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don't have an account yet?
-                            <router-link to="/signup"
-                                class="font-medium text-green-600 hover:underline dark:text-green-500">Sign
-                                up
-                            </router-link>
+                            <button @click="emit('signup')"
+                                class="font-medium text-green-600 hover:underline dark:text-green-500">
+                                Sign up
+                            </button>
                         </p>
                     </form>
                 </div>

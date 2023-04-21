@@ -1,12 +1,31 @@
 <script setup lang="ts">
 
-import { Router, useRouter } from 'vue-router';
-import handleSignup from '../composables/auth/handleSignup';
+import { register, sendVerificationCode } from '../repository/auth';
 
-const router: Router = useRouter();
-const onSignup = (e: any) => {
-    handleSignup(e, router);
-};
+const emit = defineEmits(['verify-code', 'login']);
+
+const handleSignup = async (e: any): Promise<void> => {
+    const { email, password, confirmPassword } = e.target.elements;
+    if (password.value !== confirmPassword.value) {
+        alert('Passwords do not match');
+        return;
+    }
+
+    try {
+        await register(email.value, password.value)
+            .then((_) => {
+                sendVerificationCode(email.value, password.value)
+                    .then((_) => {
+                        alert('Please check your email for a verification code');
+                        emit('verify-code');
+                    })
+            })
+    }
+    catch (error: any) {
+        alert(error.response.data?.message)
+    }
+
+}
 
 </script>
 
@@ -16,10 +35,11 @@ const onSignup = (e: any) => {
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    <h1
+                        class="w-full flex justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Create and account
                     </h1>
-                    <form @submit.prevent="onSignup" class="space-y-4 md:space-y-6">
+                    <form @submit.prevent="handleSignup" class="space-y-4 md:space-y-6">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
@@ -61,9 +81,10 @@ const onSignup = (e: any) => {
                         </button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Already have an account?
-                            <router-link to="/login" class="font-medium text-green-600 hover:underline dark:text-green-500">
+                            <button @click="emit('login')"
+                                class="font-medium text-green-600 hover:underline dark:text-green-500">
                                 Login here
-                            </router-link>
+                            </button>
                         </p>
                     </form>
                 </div>

@@ -94,7 +94,7 @@ export async function send(req: UserRequest, res: Response): Promise<void> {
 // Only the user who received the invite can update its status
 export async function update(req: UserRequest, res: Response): Promise<void> {
   try {
-    if (!req.params.status) {
+    if (!req.query.status) {
       res.status(400).json({
         success: false,
         message: 'Bad request'
@@ -114,7 +114,7 @@ export async function update(req: UserRequest, res: Response): Promise<void> {
       return;
     }
 
-    invitation.status = req.params.status;
+    invitation.status = req.query.status as string;
     await invitation.save();
     res.status(200).json({
       success: true,

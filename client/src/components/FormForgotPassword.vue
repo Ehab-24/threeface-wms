@@ -1,8 +1,7 @@
 <script setup lang="ts">
 
-import handleForgotPassword from '../composables/auth/handleForgotPassword';
-
-const onSubmit = (e: any) => handleForgotPassword(e);
+defineEmits(['login']);
+const handleSubmit = (e: any): void => {};
 
 </script>
 
@@ -18,7 +17,7 @@ const onSubmit = (e: any) => handleForgotPassword(e);
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Enter your email
                     </h1>
-                    <form @submit.prevent="onSubmit" class="space-y-4 md:space-y-6" action="#">
+                    <form @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6" action="#">
 
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
@@ -37,9 +36,9 @@ const onSubmit = (e: any) => handleForgotPassword(e);
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Remembered password yet?
 
-                            <router-link to="/login" class="font-medium text-green-600 hover:underline dark:text-green-500">
+                            <button @click="$emit('login')" class="font-medium text-green-600 hover:underline dark:text-green-500">
                                 Log in
-                            </router-link>
+                            </button>
                         </p>
                     </form>
                 </div>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
 import VH2 from './VH2.vue';
-import { getUserState } from '../repository/authentication';
 
-const user = await getUserState();
+const user = {
+    displayName: 'John Doe'
+}
 
 </script>
 
