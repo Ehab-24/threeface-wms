@@ -1,7 +1,8 @@
 import { Response } from 'express';
 import { UserRequest } from '../interfaces';
 import { ProductModel } from '../models';
-import { Product } from '../types';
+import { PageInfo, Product } from '../types';
+import { extendPipeline, getPageInfo } from '../shared/utils';
 
 // **************************************************************
 // * CRUD for products of the currently logged in user
@@ -13,14 +14,23 @@ export async function readAll(req: UserRequest, res: Response): Promise<void> {
     if (!req.user.warehouse) {
       res.status(400).json({
         success: false,
-        message: 'Bad request: Curently logged in user has no warehouse'
+        message: 'Curently logged in user has no warehouse'
       });
       return;
     }
-    const products = await ProductModel.find({ warehouse: req.user.warehouse });
+
+    const pipeline = [{ $match: { warehouse: req.user.warehouse } }];
+    const { limit, page }: { limit: number; page: number } = extendPipeline(
+      pipeline,
+      req
+    );
+    const products = await ProductModel.aggregate(pipeline);
+    const pageInfo: PageInfo = getPageInfo(products, page, limit);
+
     res.status(200).json({
       success: true,
-      data: products
+      data: products,
+      pageInfo
     });
   } catch (error) {
     res.status(500).json({
@@ -36,7 +46,7 @@ export async function readOne(req: UserRequest, res: Response): Promise<void> {
     if (!req.user.warehouse) {
       res.status(400).json({
         success: false,
-        message: 'Bad request: Curently logged in user has no warehouse'
+        message: 'Curently logged in user has no warehouse'
       });
       return;
     }
@@ -65,12 +75,13 @@ export async function createOne(
     if (!req.user.warehouse) {
       res.status(400).json({
         success: false,
-        message: 'Bad request: Curently logged in user has no warehouse'
+        message: 'Curently logged in user has no warehouse'
       });
       return;
     }
 
-    const payload: Product & Omit<Product, 'warehouse'> = req.body;
+    const payload: Product & Omit<Product, 'warehouse' | 'createdAt'> =
+      req.body;
     const product = await ProductModel.create({
       ...payload,
       warehouse: req.user.warehouse
@@ -98,12 +109,12 @@ export async function updateOne(
     if (!req.user.warehouse) {
       res.status(400).json({
         success: false,
-        message: 'Bad request: Curently logged in user has no warehouse'
+        message: 'Curently logged in user has no warehouse'
       });
       return;
     }
 
-    const payload: Product & Omit<Product, 'warehouse'> = req.body;
+    const payload = req.body;
     const response = await ProductModel.findOneAndUpdate(
       { _id: req.params.id },
       payload,

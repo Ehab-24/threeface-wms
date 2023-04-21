@@ -4,14 +4,6 @@ import { User } from '../types';
 import { UserModel } from '../models';
 
 export function read(req: UserRequest, res: Response): void {
-  // ! Should not be possible to get here without a user though
-  if (!req.user) {
-    res.status(401).json({
-      success: false,
-      message: 'Unauthorized'
-    });
-    return;
-  }
   res.send(req.user);
 }
 

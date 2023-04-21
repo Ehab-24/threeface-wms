@@ -1,10 +1,12 @@
 <script setup lang="ts">
 
-import { useRouter } from 'vue-router';
+import { updateUser } from '../repository/app/user';
 import ElevatedButton from './ElevatedButton.vue';
-import updateUserProfile from '../composables/auth/updateUserProfile';
 
-const onSubmit = (e: any) => updateUserProfile(e);
+const handleSubmit = async (e: any): Promise<void> => {
+    const { name, photoURL } = e.target.elements;
+    await updateUser({ name: name.value, photoURL: photoURL.value });
+}
 
 </script>
 
@@ -18,7 +20,8 @@ const onSubmit = (e: any) => updateUserProfile(e);
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Settings
                     </h1>
-                    <form @submit.prevent="onSubmit" class="space-y-4 md:space-y-6 flex flex-col items-center" action="#">
+                    <form @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6 flex flex-col items-center"
+                        action="#">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 name</label>

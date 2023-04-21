@@ -1,9 +1,12 @@
-import { Timestamp } from "firebase/firestore";
-
 export type Invoice = {
-    _id?: string,
-    customer: string,
-    totalAmount: number,
-    createdAt: Timestamp,
-    numProducts: number,
+  _id?: string;
+  warehouse: string;
+  customer: string;
+  numProducts: number;
+  createdAt: Date;
+  products: {
+    name: string;
+    price: number;
+    quantity: number;
+  }[];
 };

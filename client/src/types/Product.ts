@@ -1,6 +1,8 @@
 export type Product = {
-    name: string,
-    price: number,
-    quantity: number,
-    createdAt: Date,
-}
+  _id?: string;
+  warehouse: string;
+  name: string;
+  price: number;
+  quantity: number;
+  createdAt: Date;
+};

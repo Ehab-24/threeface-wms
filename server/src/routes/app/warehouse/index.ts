@@ -3,6 +3,7 @@ import * as warehouseController from '../../../controllers/warehouse';
 import productRouter from './product'
 import invoiceRouter from './invoice'
 import customerRouter from './customer'
+import invitationRouter from './invitation'
 import { setUserWarehouse } from '../../../middleware/app';
 
 const router: Router = Router();
@@ -16,5 +17,6 @@ router.route('/')
 router.use('/product', setUserWarehouse, productRouter);
 router.use('/invoice', setUserWarehouse, invoiceRouter);
 router.use('/customer', setUserWarehouse, customerRouter);
+router.use('/invitation', setUserWarehouse, invitationRouter);
 
 export default router;

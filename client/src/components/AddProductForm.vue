@@ -2,25 +2,23 @@
 import { Ref, ref } from "vue";
 import ElevatedButton from "../components/ElevatedButton.vue";
 import type { Product } from "../types/Product";
-import { createProduct } from "../repository/db/product";
-import { getUserState } from "../repository/authentication";
 
 const product: Ref<Product> = ref({
   name: "",
   price: 0,
   quantity: 0,
   createdAt: new Date(),
+  warehouse: ''
 });
 
-const user: any = await getUserState();
 
 const add = async (id:any): Promise<void> => {
-  createProduct(user.uid, product.value);
+  // createProduct(user.uid, product.value);
 };
 </script>
 
 <template>
-  <form @submit.prevent="() => add(user.uid)">
+  <form @submit.prevent="() => add(1)">
     <div>
       <label
         for="name"
