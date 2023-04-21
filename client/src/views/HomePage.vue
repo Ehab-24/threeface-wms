@@ -14,16 +14,16 @@ import PageHeader from '../components/PageHeader.vue';
 
 
 <template>
-    <div  class="flex  flex-col w-full" >
+    <div  class=" pl-10 grid grid-cols-1 w-full" >
 
         <PageHeader>Home</PageHeader>
     
-       <div class="flex flex-col w-full">
-        <div class="flex lg:flex-row md:flex-col md:gap-3 sm:flex-col sm:gap-3">
+       <div class=" grid grid-cols-1 w-full ">
+        <div class="grid grid-flow-col-dense ">
             <card title="Sales Overview ">
                 <template #body>
 
-                    <div class="flex justify-center items-start sm:justify-center sm:items-center  lg:flex-row md:flex-row  sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
+                    <div class="  grid grid-cols-2 place-content-center gap-6 py-3 px-4">
                         <div class="flex flex-col w-min">
                             <MiniCard title="Sale" :value=240>
                                 <template #icon>
@@ -76,8 +76,8 @@ import PageHeader from '../components/PageHeader.vue';
             <div class="w-6"></div>
             <card title="Puchase Overview">
                 <template #body>
-                    <div class="flex lg:flex-row md:flex-row sm:flex-col  lg:gap-20 md:gap-10 sm:gap-5">
-                        <div class="flex flex-col w-min">
+                    <div class=" grid grid-cols-2 place-content-center  gap-1 py-3 px-4">
+                        <div class="grid grid-cols-1 w-min">
                             <MiniCard title="Purchases" :value=240>
                                 <template #icon>
                                     <svg class="h-8 w-8 text-white bg-opacity-6 bg-purple-200 py-0.8 px-0.8 fill-purple-500 rounded-lg "
@@ -133,7 +133,7 @@ import PageHeader from '../components/PageHeader.vue';
             </card>
         </div>
         <div class="h-4"></div>
-        <div class="flex flex-row  gap-4">
+        <div class="grid grid-flow-col-dense gap-2">
 
             <card title="Inventory Summary">
                 <template #body>

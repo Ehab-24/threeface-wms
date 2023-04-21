@@ -9,15 +9,15 @@ import Sidebar from '../components/Sidebar.vue';
 
     
 
-    <div class=" min-h-screen overflow-x-hidden  w-full bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 text-gray-900 dark:text-white">
+    <div class=" min-h-0 h-full overflow-x-hidden  w-full  bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 text-gray-900 dark:text-white">
         <Titlebar />
 
-        <div class="flex ">
+        <div class="flex    ">
 
-            <Sidebar />
+          <div class=" items-start"><Sidebar /></div>
              
       
-            <div class="  2xl:pl-10 xl:pl-10  py-4">
+            <div class=" pr-10 pt-4 pl-10 ">
                 <router-view />   
             </div>
         </div>

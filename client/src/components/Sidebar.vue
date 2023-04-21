@@ -31,7 +31,7 @@ const data = [
 
 
 <template>
-    <div class="min-h-screen w-56 px-4 py-8 flex flex-col bg-white dark:bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
+    <div class="min-h-screen md:h-full sm:h-full w-56 px-4 py-8 flex flex-col bg-white dark:bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
 
         <v-h2>Sidebar</v-h2>
         <div class="h-6"></div>
