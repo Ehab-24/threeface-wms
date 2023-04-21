@@ -1,10 +1,10 @@
-import { Invitation } from '../types';
+import { Invitation, PageInfo } from '../types';
 import * as emailService from '../services/email';
 import { UserModel, InvitationModel } from '../models';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { UserRequest } from '../interfaces';
 import { Response } from 'express';
-import { extendPipeline } from '../global/utils';
+import { extendPipeline, getPageInfo } from '../shared/utils';
 import mongoose from 'mongoose';
 
 async function validate(invitation: Invitation): Promise<boolean> {
@@ -161,13 +161,18 @@ export async function readSentInvites(
 ): Promise<void> {
   try {
     const pipeline = [{ $match: { 'from.email': req.user.email } }];
-    extendPipeline(pipeline, req);
+    const { limit, page }: { limit: number; page: number } = extendPipeline(
+      pipeline,
+      req
+    );
     const response = await InvitationModel.aggregate(pipeline);
+    const pageInfo: PageInfo = getPageInfo(response, limit, page);
 
     res.status(200).json({
       success: true,
       message: 'Invitations read successfully',
-      data: response
+      data: response,
+      pageInfo
     });
   } catch (error) {
     res.status(500).json({
@@ -184,13 +189,18 @@ export async function readReceivedInvites(
 ): Promise<void> {
   try {
     const pipeline = [{ $match: { to: req.user.email } }];
-    extendPipeline(pipeline, req);
+    const { limit, page }: { limit: number; page: number } = extendPipeline(
+      pipeline,
+      req
+    );
     const response = await InvitationModel.aggregate(pipeline);
+    const pageInfo: PageInfo = getPageInfo(response, limit, page);
 
     res.status(200).json({
       success: true,
       message: 'Invitations read successfully',
-      data: response
+      data: response,
+      pageInfo
     });
   } catch (error) {
     res.status(500).json({
