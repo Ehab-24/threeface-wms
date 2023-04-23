@@ -25,15 +25,14 @@ export async function read(req: UserRequest, res: Response): Promise<void> {
 
 export async function create(req: UserRequest, res: Response): Promise<void> {
   try {
-    const payload: Warehouse & Omit<Warehouse, 'vendors'> = req.body;
-    payload.vendors = [req.user._id];
+    const payload = req.body as Warehouse & Omit<Warehouse, 'createdAt'>;
 
     const warehouse = await WarehouseModel.create(payload);
 
     // Assign warehouse to user
     await UserModel.updateOne(
       { _id: req.user._id },
-      { warehouse: req.user.warehouse, role: 'owner' }
+      { warehouse: warehouse._id, role: 'owner' }
     );
 
     res.status(201).json({

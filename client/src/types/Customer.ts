@@ -1,7 +1,9 @@
 export type Customer = {
-  
-    name: string,
-    totalSpent: number,
-    numPurchases: number,
-    lastPurchase: Date
-}
+  _id?: string;
+  name: string;
+  lastPurchase: Date;
+  createdAt: Date;
+  totalPurchases: number;
+  totalSpent: number;
+  warehouse: string;
+};

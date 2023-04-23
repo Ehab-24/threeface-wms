@@ -17,7 +17,7 @@ import Sidebar from '../components/Sidebar.vue';
           <div class=" items-start"><Sidebar /></div>
              
       
-            <div class=" pr-10 pt-4 pl-10 ">
+            <div class=" pr-3 pt-4 pl-10 ">
                 <router-view />   
             </div>
         </div>
