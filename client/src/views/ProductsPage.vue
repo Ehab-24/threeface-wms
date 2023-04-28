@@ -12,7 +12,7 @@ import DataTable from "../components/DataTable.vue";
 
   <div class="h-4"></div>
 
-  <div class="grid grid-flow-row place-content-stretch">
+  <div class="grid grid-flow-row-dense place-content-stretch">
     <div class="mb-12 w-full grid grid-flow-col  gap-1">
       <div class="basis-1/4">
         <BigCard title="Total Products" :value="6700">
@@ -32,9 +32,9 @@ import DataTable from "../components/DataTable.vue";
 
       
     </div>
-    <div class="mb-12 w-full grid grid-flow-col gap-4">
+    <div class="mb-12 w-full grid grid-flow-col-dense gap-4">
       <div class="basis-1/4">
-        <BigCard title="Out of Stock Products" :value="3"><template #icon> 
+        <BigCard title="Out Stock Products" :value="3"><template #icon> 
           <svg class="h-8 w-8 text-red-400"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />  <rect x="9" y="3" width="6" height="4" rx="2" />  <path d="M10 12l4 4m0 -4l-4 4" />
           </svg>
         </template></BigCard>
@@ -51,7 +51,7 @@ import DataTable from "../components/DataTable.vue";
    
   </div>
 
-  <div class="mt-4 grid grid-flow-row  w-max">
+  <div class="mt-4 grid grid-flow-row-dense  w-max">
     <DataTable @click="" :headers="['id','warehouse','name' ,'price','quantity','createdAt']" :data-records="[]"/>
   </div>
 </template>

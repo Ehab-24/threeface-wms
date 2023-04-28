@@ -10,8 +10,8 @@ import BigCard from "../components/BigIconCard.vue";
   <PageHeader>Customers</PageHeader>
   <div class="h-4"></div>
 
-<div class="grid grid-flow-row place-content-stretch">
-  <div class="mb-12 w-full grid grid-flow-col  gap-1">
+<div class="grid grid-flow-row-dense place-content-stretch">
+  <div class="mb-12 w-full grid grid-flow-col-dense  gap-1">
     
     <div class="basis-1/4">
       <BigCard title="Total Customers" :value="6700">
@@ -31,7 +31,7 @@ import BigCard from "../components/BigIconCard.vue";
 
     
   </div>
-  <div class="mb-12 w-full grid grid-flow-col gap-4">
+  <div class="mb-12 w-full grid grid-flow-col-dense gap-4">
     <div class="basis-1/4">
       <BigCard title="Inactive Customers" :value="3"><template #icon>
         <svg class="h-8 w-8 text-red-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <line x1="18" y1="8" x2="23" y2="13" />  <line x1="23" y1="8" x2="18" y2="13" />
@@ -51,7 +51,7 @@ import BigCard from "../components/BigIconCard.vue";
   </div>
  
 </div>
-  <div class="mt-4 grid grid-flow-row  w-max">
+  <div class="mt-4 grid grid-flow-row-dense  w-max">
   <DataTable @click="" :headers="['id','name','lastPurchase','createdAt','totalPurchases','totalSpent','warehouse' ]" :data-records="[]" />
 </div>
   
