@@ -24,7 +24,7 @@ const val = computed(() => {
 
 <template>
 
-<div class="w-max h-min grid grid-flow-col place-content-strecth shadow-lg bg-white dark:bg-gray-800 rounded-2xl p-4">
+<div class="w-max h-min grid grid-flow-col place-content-strecth shadow-lg bg-white dark:bg-gray-700 dark:bg-opacity-50 rounded-2xl p-4">
    
     <div class="pt-4 place-items-start"><slot name="icon"> </slot></div>
        
