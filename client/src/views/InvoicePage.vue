@@ -20,5 +20,8 @@ const addInvoice = (): void => {
 
 <template>
     <PageHeader>Invoice</PageHeader>
+
+    <div class="mt-4 grid grid-flow-row  w-max">
     <data-table @click="addInvoice" :data-records="invoices" :headers="['id', 'customer', 'num products', 'created at']" />
+    </div>
 </template>

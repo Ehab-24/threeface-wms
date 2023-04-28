@@ -24,16 +24,17 @@ const val = computed(() => {
 
 <template>
 
-<div class="w-80 h-min shadow-lg bg-white dark:bg-gray-800 rounded-2xl p-4">
-    <div class="flex flex-row">
-            <div class="w-12 h-12 mb-4 mt-4 bg-gray-500">icon</div>
+<div class="w-max h-min grid grid-flow-col place-content-strecth shadow-lg bg-white dark:bg-gray-800 rounded-2xl p-4">
+   
+    <div class="pt-4 place-items-start"><slot name="icon"> </slot></div>
+       
 
-            <div class = "flex flex-col pb-2 pt-2 pl-4 whitespace-nowrap">
+            <div class = "grid grid-flow-row place-item-end pb-2 pt-2 pl-4 whitespace-nowrap">
                 <VH1 class="">{{ title }}</VH1>
                 <VD1>{{ val }}</VD1>
             </div>
     </div>
-</div>
+
     
 
         

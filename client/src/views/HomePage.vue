@@ -14,7 +14,7 @@ import PageHeader from '../components/PageHeader.vue';
 
 
 <template>
-    <div  class=" pl-10 grid grid-cols-1 w-full" >
+    <div  class="  grid grid-cols-1 w-full" >
 
         <PageHeader>Home</PageHeader>
     

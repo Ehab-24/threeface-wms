@@ -9,7 +9,7 @@ import routes from './routes';
 import { User } from '../types';
 
 const router: Router = createRouter({
-  history: createWebHistory('http://localhost:5173/'),
+  history: createWebHistory('/'),
   routes
 });
 
@@ -40,6 +40,6 @@ const onBeforeEach: NavigationGuard = async (to, from, next) => {
   }
 };
 
-router.beforeEach(onBeforeEach);
+// router.beforeEach(onBeforeEach);
 
 export default router;

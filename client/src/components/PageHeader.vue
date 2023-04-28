@@ -5,7 +5,7 @@ import VH1 from '../components/VH1.vue';
 
 <template>
     <div
-        class="h-16 w-screen grid grid-flow-col-dense place-content-stretch  ">
+        class="h-16 w-screen grid grid-flow-col-dense place-content-stretch   ">
 
         <div class=" ">
             <v-h1>
@@ -13,7 +13,7 @@ import VH1 from '../components/VH1.vue';
             </v-h1>
         </div>
        
-        <div class="flex gap-3">
+        <div class="grid grid-flow-col place-content-center gap-3 w-max">
             <elevated-button>Month to Date</elevated-button>
             <elevated-button>Year to Date</elevated-button>
             <elevated-button>Export</elevated-button>
