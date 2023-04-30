@@ -25,11 +25,7 @@ const onBeforeEach: NavigationGuard = async (to, from, next) => {
   );
 
   let user: User | null;
-  if (fromUnAuth) {
-    user = null;
-  } else {
-    user = await getUser();
-  }
+  user = await getUser();
 
   if (!user && requiresAuth) {
     next('/auth');
@@ -40,6 +36,6 @@ const onBeforeEach: NavigationGuard = async (to, from, next) => {
   }
 };
 
-// router.beforeEach(onBeforeEach);
+router.beforeEach(onBeforeEach);
 
 export default router;
