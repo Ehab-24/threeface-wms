@@ -10,7 +10,32 @@ import card2 from '../components/Card2.vue';
 import PageHeader from '../components/PageHeader.vue';
 
 // import Chart from "../components/Chart.vue";
+import { Pie, Line, PolarArea, Radar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, PointElement, LineElement, RadialLinearScale, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 
+
+// Create a Pie Chart
+ChartJS.register(Title, Tooltip, ArcElement, PointElement, LineElement, RadialLinearScale, CategoryScale, LinearScale);
+const chartData = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    // Create random datasets
+    { data: [40, 20, 12, 19, 24, 55, 107], backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB'], label: 'Dataset 1' },
+    { data: [50, 30, 22, 8, 42, 36, 88], backgroundColor: ['#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56'], label: 'Dataset 2' }
+  ]
+};
+const chartOptions = {
+  responsive: false,
+  plugins: {
+    legend: {
+      display: false
+    },
+    title: {
+      display: true,
+      text: 'Charts'
+    }
+  }
+}
 
 
 
@@ -236,7 +261,7 @@ import PageHeader from '../components/PageHeader.vue';
                             
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
-                                    <!-- <Chart></Chart> -->
+                                    <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
                                 </template> 
                             </MiniCard>
                                 
