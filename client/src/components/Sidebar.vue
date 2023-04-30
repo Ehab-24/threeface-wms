@@ -31,9 +31,9 @@ const data = [
 
 
 <template>
-    <div class="min-h-full w-56 px-4 py-8 flex flex-col bg-white dark:bg-gray-800 shadow-lg">
+    <div class="min-h-full w-56 px-4 py-8 flex flex-col border-r-2 border-gray-300 dark:border-gray-800">
 
-        <v-h2>Sidebar</v-h2>
+        <v-h2 class="text-gray-500 dark:text-gray-400">Sidebar</v-h2>
         <div class="h-6"></div>
         <div class="flex flex-col">
 

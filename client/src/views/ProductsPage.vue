@@ -32,3 +32,4 @@ import DataTable from "../components/DataTable.vue";
     <DataTable @click="" :headers="[]" :data-records="[]"/>
   </div>
 </template>
+
