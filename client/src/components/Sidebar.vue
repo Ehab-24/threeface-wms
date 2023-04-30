@@ -66,10 +66,8 @@ const data = [
             </ListTile>
             <ListTile title="Customers" link="/customers">
                 <template #icon>
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                    <path d="M16 11l2 2l4 -4" />
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
                 </template>
             </ListTile>
             <ListTile title="Suppliers" link="/suppliers">
