@@ -36,6 +36,6 @@ const onBeforeEach: NavigationGuard = async (to, from, next) => {
   }
 };
 
-router.beforeEach(onBeforeEach);
+// router.beforeEach(onBeforeEach);
 
 export default router;
