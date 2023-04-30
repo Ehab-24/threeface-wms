@@ -9,7 +9,7 @@ import routes from './routes';
 import { User } from '../types';
 
 const router: Router = createRouter({
-  history: createWebHistory('http://localhost:5173/'),
+  history: createWebHistory('/'),
   routes
 });
 

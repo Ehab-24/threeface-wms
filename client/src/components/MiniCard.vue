@@ -23,12 +23,13 @@ const val = computed(() => {
 
 
 <template>
-    <div class=" md:w-max md:h-min flex flex-row items-start shadow-sm bg-gray-200 dark:bg-gray-900 rounded-2xl p-5">
+    <div class=" w-max h-min flex flex-row items-start shadow-sm bg-gray-200 dark:bg-gray-900 rounded-2xl p-5">
 
         <slot name="icon"></slot>
-
+        
         <div class="w-7"></div>
         <div class="flex flex-col">
+            <slot name="graph"></slot>
             <VB1>{{ title }}</VB1>
 
             <v-d1>{{ val }}</v-d1>

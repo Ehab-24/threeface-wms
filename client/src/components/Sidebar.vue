@@ -31,7 +31,9 @@ const data = [
 
 
 <template>
-    <div class="min-h-full w-56 px-4 py-8 flex flex-col border-r-2 border-gray-300 dark:border-gray-800">
+
+    <div class="min-h-screen md:h-full sm:h-full w-56 px-4 py-8 flex flex-col bg-white dark:bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
+
 
         <v-h2 class="text-gray-500 dark:text-gray-400">Sidebar</v-h2>
         <div class="h-6"></div>
@@ -69,6 +71,16 @@ const data = [
                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                     <path d="M16 11l2 2l4 -4" />
                 </template>
+            </ListTile>
+            <ListTile title="Suppliers" link="/suppliers">
+                <template #icon>
+                    <path stroke="none" d="M0 0h24v24H0z"/>
+                        <circle cx="7" cy="17" r="2" />
+                        <circle cx="17" cy="17" r="2" />
+                          <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" /> 
+                           <line x1="3" y1="9" x2="7" y2="9" />
+                </template>
+
             </ListTile>
         </div>
     </div>

@@ -2,20 +2,27 @@
 
 import Titlebar from '../components/Titlebar.vue';
 import Sidebar from '../components/Sidebar.vue';
-
 </script>
 
 
 <template>
-    <div class="h-full w-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
-        <Titlebar />
 
-        <div class="md:flex min-h-full">
 
-            <Sidebar />
+    
+
+    <div class=" grid  h-full overflow-x-hidden  w-full  bg-gray-200 dark:bg-gradient-to-r from-gray-900 to-gray-800 text-gray-900 dark:text-white">
+        
+        <div class=""><Titlebar /></div>
+
+        <div class="flex    ">
+
+
+          <div class=" "><Sidebar /></div>
              
-            <!-- router-view when user is authenticated -->
-            <div class="h-full w-full px-8 py-4">
+
+      
+            <div class=" pr-3 pt-4 pl-10 ">
+
                 <router-view />   
             </div>
         </div>

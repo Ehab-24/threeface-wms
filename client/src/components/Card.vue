@@ -15,7 +15,7 @@ defineProps({
 
 <template>
 
-    <div class="md:w-max  md:h-min shadow-lg bg-white dark:bg-gray-800 rounded-2xl px-6 py-4">
+    <div class="w-max   grid place-content-evenly shadow-lg bg-white dark:bg-gray-700 dark:bg-opacity-50 rounded-2xl px-4 py-3">
 
         <v-h1 class="pb-4">{{ title }}</v-h1>
         
