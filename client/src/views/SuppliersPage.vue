@@ -3,6 +3,7 @@ import PageHeader from '../components/PageHeader.vue';
 import DataTable from '../components/DataTable.vue';
 import BigCard from "../components/BigIconCard.vue";
 
+
 import { Pie, Line, PolarArea, Radar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, PointElement, LineElement, RadialLinearScale, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 
@@ -31,11 +32,13 @@ const chartOptions = {
 }
  
 
+
 </script>
 
 <template>
   <PageHeader>Suppliers</PageHeader>
   <div class="h-4"></div>
+
   <div class="w-full mb-12 grid  grid-flow-row-dense lg:grid-flow-col-dense  place-items-around gap-y-8">
     <Pie  height="300" width="300" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
 
@@ -45,6 +48,7 @@ const chartOptions = {
 
    
   </div>
+
 <div class="grid grid-flow-row-dense place-content-stretch">
   <div class="mb-12 w-full grid grid-flow-col-dense  gap-1">
     

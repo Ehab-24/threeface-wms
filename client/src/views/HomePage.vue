@@ -10,6 +10,7 @@ import card2 from '../components/Card2.vue';
 import PageHeader from '../components/PageHeader.vue';
 
 // import Chart from "../components/Chart.vue";
+
 import { Pie, Line, PolarArea, Radar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, PointElement, LineElement, RadialLinearScale, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 
@@ -38,6 +39,8 @@ const chartOptions = {
 }
 
 
+
+</script>
 
 </script>
 
@@ -261,7 +264,9 @@ const chartOptions = {
                             
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
+
                                     <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
+
                                 </template> 
                             </MiniCard>
                                 

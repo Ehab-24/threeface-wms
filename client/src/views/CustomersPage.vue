@@ -37,6 +37,7 @@ const chartOptions = {
   <PageHeader>Customers</PageHeader>
 
   <div class="h-4"></div>
+
   <div class="w-full mb-12 grid  grid-flow-row-dense lg:grid-flow-col-dense  place-items-around gap-y-8">
     <Pie  height="300" width="300" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
 
@@ -45,6 +46,7 @@ const chartOptions = {
     <PolarArea id="polararea-chart-customer" height="300" width="300" :options="chartOptions" :data="chartData" />
 
    
+
   </div>
 
 
