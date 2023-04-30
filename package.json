@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "vue-property-decorator": "^9.1.2",
+    "vue.charts.css": "^2.0.1",
     "vue3-cookies": "^1.0.6"
   }
 }

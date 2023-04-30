@@ -1,3 +1,5 @@
+
+
 <script setup lang="ts">
 import ibutton from '../components/ElevatedButton.vue';
 import Card from '../components/Card.vue';
@@ -7,10 +9,12 @@ import rectcard from '../components/RectCard.vue';
 import card2 from '../components/Card2.vue';
 import PageHeader from '../components/PageHeader.vue';
 
+// import Chart from "../components/Chart.vue";
+
+
+
 
 </script>
-
-
 
 
 <template>
@@ -223,6 +227,29 @@ import PageHeader from '../components/PageHeader.vue';
                 </template>
             </card>
         </div>
-       </div>
+        <div class="h-4"></div>
+        <div class="grid grid-flow-col-dense h-max">
+                <card title="Chart">
+                    <template #body>
+                        <h2 class="text-2xl font-bold mb-4">Sales Trends</h2>
+                        <div class="grid grid-flow-row-dense place-content-around h-max gap-4">
+                            
+                            <MiniCard title="Total Sales" :value=60000>
+                                <template #graph>
+                                    <!-- <Chart></Chart> -->
+                                </template> 
+                            </MiniCard>
+                                
+                                
+                            </div>
+
+
+                    </template>
+                </card>
+
+        </div>
     </div>
+    </div>
+    
+    
 </template>
