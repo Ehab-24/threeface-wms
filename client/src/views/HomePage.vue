@@ -253,7 +253,7 @@ const chartOptions = {
             </card>
         </div>
         <div class="h-4"></div>
-        <div class="grid grid-flow-col-dense h-max">
+        <div class="grid grid-flow-col-dense 2xl:pl-40  h-max">
                 <card title="Chart">
                     <template #body>
                         <h2 class="text-2xl font-bold mb-4">Sales Trends</h2>
@@ -261,7 +261,8 @@ const chartOptions = {
                             
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
-                                    <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
+                                    <Line id="line-chart-customer" height="300" width="850 " :options="chartOptions" :data="chartData" />
+                                     <div class="h-5"></div>
                                 </template> 
                             </MiniCard>
                                 
