@@ -39,6 +39,11 @@ export default [
         path: '/customers',
         name: 'customers',
         component: () => import('../views/CustomersPage.vue')
+      },
+      {
+        path: '/suppliers',
+        name: 'suppliers',
+        component: () => import('../views/SuppliersPage.vue')
       }
     ]
   },
