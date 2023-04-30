@@ -37,14 +37,14 @@ const chartOptions = {
   <PageHeader>Customers</PageHeader>
 
   <div class="h-4"></div>
-  <div class="w-full mb-12 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 place-items-center gap-y-8">
-    <Pie height="500" width="500" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
+  <div class="w-full mb-12 grid  grid-flow-row-dense lg:grid-cols-2  place-items-around gap-y-8">
+    <Pie height="300" width="300" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
 
-    <Line id="line-chart-customer" height="400" width="400" :options="chartOptions" :data="chartData" />
+    <Line id="line-chart-customer" height="300" width="400" :options="chartOptions" :data="chartData" />
 
-    <PolarArea id="polararea-chart-customer" height="400" width="400" :options="chartOptions" :data="chartData" />
+    <PolarArea id="polararea-chart-customer" height="300" width="300" :options="chartOptions" :data="chartData" />
 
-    <Radar id="radar-chart-customer" height="400" width="400" :options="chartOptions" :data="chartData" />
+    <Radar id="radar-chart-customer" height="300" width="400" :options="chartOptions" :data="chartData" />
   </div>
 
 

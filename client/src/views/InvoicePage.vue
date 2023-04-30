@@ -47,10 +47,10 @@ const chartOptions = {
     <PageHeader>Invoice</PageHeader>
 
 
-    <div class="mt-4 grid grid-flow-row  w-max">
+    <div class="mt-4 grid grid-flow-row place-content-center w-max">
 
     
-    <div class="w-[600px] h-[400px] bg-yellow-300">
+    <div class="w-[800px] h-[400px]  bg-teal-300 bg-opacity-20 rounded-xl">
         <Bar id="bar-chart-invoice" :options="chartOptions" :data="chartData" />
     </div>
 
