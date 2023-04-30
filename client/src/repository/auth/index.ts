@@ -1,3 +1,4 @@
+import { User } from '../../types';
 import axios from 'axios';
 import { useCookies } from 'vue3-cookies';
 
@@ -12,8 +13,7 @@ export async function register(email: string, password: string): Promise<any> {
   try {
     const res = await authAPI.post('/register', { email, password });
     return res.data;
-  }
-  catch(error: any) {
+  } catch (error: any) {
     alert(error.response.data.message);
   }
 }
@@ -40,13 +40,16 @@ export async function verifyCode(
   email: string,
   password: string,
   code: number
-): Promise<boolean> {
+): Promise<{token: string, user: User} | null> {
   try {
-    await authAPI.patch('/verify-code', { email, password, code });
-    return true;
-  }
-  catch(error: any) {
+    const response = await authAPI.patch('/verify-code', {
+      email,
+      password,
+      code
+    });
+    return response.data.data;
+  } catch (error: any) {
     alert(error.response.data.message ?? error.message);
-    return false;
+    return null;
   }
 }

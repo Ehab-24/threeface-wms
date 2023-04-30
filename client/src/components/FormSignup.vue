@@ -2,7 +2,10 @@
 
 import { register, sendVerificationCode } from '../repository/auth';
 
-const emit = defineEmits(['verify-code', 'login']);
+const emit = defineEmits<{
+    (event: 'verify-code', email: string, password: string): void;
+    (event: 'login'): void;
+}>();
 
 const handleSignup = async (e: any): Promise<void> => {
     const { email, password, confirmPassword } = e.target.elements;
@@ -17,7 +20,7 @@ const handleSignup = async (e: any): Promise<void> => {
                 sendVerificationCode(email.value, password.value)
                     .then((_) => {
                         alert('Please check your email for a verification code');
-                        emit('verify-code');
+                        emit('verify-code', email.value, password.value);
                     })
             })
     }
