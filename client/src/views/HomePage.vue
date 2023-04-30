@@ -42,7 +42,7 @@ const chartOptions = {
 
 </script>
 
-</script>
+
 
 
 <template>
@@ -264,14 +264,10 @@ const chartOptions = {
                             
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
-<<<<<<< HEAD
+
                                     <Line id="line-chart-customer" height="300" width="850 " :options="chartOptions" :data="chartData" />
                                      <div class="h-5"></div>
-=======
 
-                                    <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
-
->>>>>>> 3b95afe528d7d0eeb3aea751f55e394d1f261134
                                 </template> 
                             </MiniCard>
                                 
