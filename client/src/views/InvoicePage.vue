@@ -4,6 +4,8 @@ import DataTable from '../components/DataTable.vue';
 import { Invoice } from '../types';
 import { Ref, ref } from 'vue';
 import { getInvoices } from '../repository/app/warehouse/invoice'
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 const invoices: Ref<Invoice[]> = ref([]);
 getInvoices().then((data) => {
@@ -16,12 +18,45 @@ const addInvoice = (): void => {
 
 }
 
+// Create a Bar Chart
+ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
+const chartData = {
+    labels: ['January', 'February', 'March'],
+    datasets: [
+        { data: [40, 20, 12], backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB'], label: 'Dataset 1' },
+        { data: [50, 30, 22], backgroundColor: ['#FFCE56', '#FFCE56', '#FFCE56'], label: 'Dataset 2' }
+    ]
+};
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: 'Chart.js Bar Chart'
+        }
+    }
+}
+
 </script>
+
 
 <template>
     <PageHeader>Invoice</PageHeader>
 
+
     <div class="mt-4 grid grid-flow-row  w-max">
+
+    
+    <div class="w-[600px] h-[400px] bg-yellow-300">
+        <Bar id="bar-chart-invoice" :options="chartOptions" :data="chartData" />
+    </div>
+
+    <div class="h-8"></div>
+
+
     <data-table @click="addInvoice" :data-records="invoices" :headers="['id', 'customer', 'num products', 'created at']" />
     </div>
 </template>

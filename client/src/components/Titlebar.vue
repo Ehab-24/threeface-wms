@@ -14,7 +14,9 @@ const pushProfilePage = () => router.push('/profile');
 
     
 
+
     <div class="h-16 px-8 flex  justify-between items-center border-b-2 dark:border-b-gray-900 bg-whitedark:bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
+
 
         <div class="flex items-center">
 

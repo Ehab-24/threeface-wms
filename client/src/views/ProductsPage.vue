@@ -55,3 +55,4 @@ import DataTable from "../components/DataTable.vue";
     <DataTable @click="" :headers="['id','warehouse','name' ,'price','quantity','createdAt']" :data-records="[]"/>
   </div>
 </template>
+

@@ -5,10 +5,13 @@ import VH1 from '../components/VH1.vue';
 
 <template>
     <div
+
         class="h-16 w-screen grid grid-flow-col-dense place-content-stretch   ">
 
         <div class=" ">
             <v-h1>
+
+      
                 <slot></slot>
             </v-h1>
         </div>
