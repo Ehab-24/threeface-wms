@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader.vue";
 import BigCard from "../components/BigIconCard.vue";
 import DataTable from "../components/DataTable.vue";
 
+
 import { Pie, Line, PolarArea, Radar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, PointElement, LineElement, RadialLinearScale, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 
@@ -29,6 +30,7 @@ const chartOptions = {
     }
   }
 }
+
  
 </script>
 
@@ -43,8 +45,10 @@ const chartOptions = {
 
     <PolarArea id="polararea-chart-customer" height="300" width="300" :options="chartOptions" :data="chartData" />
 
+
    
   </div>
+
   <div class="grid grid-flow-row-dense place-content-stretch">
     <div class="mb-12 w-full grid grid-flow-col  gap-1">
       <div class="basis-1/4">
