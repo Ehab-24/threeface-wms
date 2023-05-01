@@ -35,7 +35,7 @@ const data = [
     <div class="min-h-screen md:h-full sm:h-full w-56 px-4 py-8 flex flex-col bg-white dark:bg-gradient-to-r from-gray-900 to-gray-800 shadow-lg">
 
 
-        <v-h2 class="text-gray-500 dark:text-gray-400">Sidebar</v-h2>
+        <v-h2 class="text-gray-500 dark:text-gray-400">Dashboard</v-h2>
         <div class="h-6"></div>
         <div class="flex flex-col">
 
@@ -66,10 +66,8 @@ const data = [
             </ListTile>
             <ListTile title="Customers" link="/customers">
                 <template #icon>
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                    <path d="M16 11l2 2l4 -4" />
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
                 </template>
             </ListTile>
             <ListTile title="Suppliers" link="/suppliers">

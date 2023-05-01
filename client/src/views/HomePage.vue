@@ -21,7 +21,7 @@ const chartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     // Create random datasets
-    { data: [40, 20, 12, 19, 24, 55, 107], backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB'], label: 'Dataset 1' },
+    { data: [40, 20, 12, 19, 24, 55, 107], backgroundColor: ['#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d'], label: 'Dataset 1' },
     { data: [50, 30, 22, 8, 42, 36, 88], backgroundColor: ['#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56'], label: 'Dataset 2' }
   ]
 };
@@ -42,7 +42,6 @@ const chartOptions = {
 
 </script>
 
-</script>
 
 
 <template>
@@ -264,14 +263,10 @@ const chartOptions = {
                             
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
-<<<<<<< HEAD
+
                                     <Line id="line-chart-customer" height="300" width="850 " :options="chartOptions" :data="chartData" />
                                      <div class="h-5"></div>
-=======
 
-                                    <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
-
->>>>>>> 3b95afe528d7d0eeb3aea751f55e394d1f261134
                                 </template> 
                             </MiniCard>
                                 

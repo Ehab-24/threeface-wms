@@ -23,7 +23,7 @@ ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
 const chartData = {
     labels: ['January', 'February', 'March'],
     datasets: [
-        { data: [40, 20, 12], backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB'], label: 'Dataset 1' },
+        { data: [40, 20, 12], backgroundColor: ['#2ee59d', '#2ee59d', '#2ee59d'], label: 'Dataset 1' },
         { data: [50, 30, 22], backgroundColor: ['#FFCE56', '#FFCE56', '#FFCE56'], label: 'Dataset 2' }
     ]
 };
