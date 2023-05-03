@@ -21,7 +21,7 @@ const chartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     // Create random datasets
-    { data: [40, 20, 12, 19, 24, 55, 107], backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB', '#36A2EB'], label: 'Dataset 1' },
+    { data: [40, 20, 12, 19, 24, 55, 107], backgroundColor: ['#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d', '#2ee59d'], label: 'Dataset 1' },
     { data: [50, 30, 22, 8, 42, 36, 88], backgroundColor: ['#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56', '#FFCE56'], label: 'Dataset 2' }
   ]
 };
@@ -42,7 +42,6 @@ const chartOptions = {
 
 </script>
 
-</script>
 
 
 <template>
@@ -256,7 +255,7 @@ const chartOptions = {
             </card>
         </div>
         <div class="h-4"></div>
-        <div class="grid grid-flow-col-dense h-max">
+        <div class="grid grid-flow-col-dense 2xl:pl-40  h-max">
                 <card title="Chart">
                     <template #body>
                         <h2 class="text-2xl font-bold mb-4">Sales Trends</h2>
@@ -265,7 +264,8 @@ const chartOptions = {
                             <MiniCard title="Total Sales" :value=60000>
                                 <template #graph>
 
-                                    <Line id="line-chart-customer" height="300" width="850" :options="chartOptions" :data="chartData" />
+                                    <Line id="line-chart-customer" height="300" width="850 " :options="chartOptions" :data="chartData" />
+                                     <div class="h-5"></div>
 
                                 </template> 
                             </MiniCard>

@@ -30,6 +30,7 @@ const val = computed(() => {
         <div class="w-7"></div>
         <div class="flex flex-col">
             <slot name="graph"></slot>
+            
             <VB1>{{ title }}</VB1>
 
             <v-d1>{{ val }}</v-d1>

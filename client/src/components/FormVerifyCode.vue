@@ -1,12 +1,20 @@
 <script setup lang="ts">
 
+import { Router, useRouter } from 'vue-router';
 import { verifyCode } from '../repository/auth';
+import { useCookies } from 'vue3-cookies';
+import { User } from '../types';
 
 const props = defineProps<{ email: string, password: string }>();
+const router: Router = useRouter();
 
 const handleSubmit = async (e: any): Promise<void> => {
     const { code } = e.target.elements;
-    await verifyCode(props.email, props.password, code.value);
+    const response: {token: string, user: User} | null = await verifyCode(props.email, props.password, Number(code.value));
+    if (response) {
+        useCookies().cookies.set('Authorization', 'Bearer ' + response.token)
+        router.push('/');
+    }
 }
 
 </script>
