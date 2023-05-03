@@ -5,5 +5,4 @@ export type Customer = {
   createdAt: Date;
   totalPurchases: number;
   totalSpent: number;
-  warehouse: string;
 };

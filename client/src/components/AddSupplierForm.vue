@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
-import type { Customer } from "../types/Customer";
-import * as customerRepository from "../repository/app/warehouse/customer";
+import type { Supplier } from "../types/Supplier";
+import * as supplierRepository from "../repository/app/warehouse/supplier";
 
-const emit = defineEmits<{ (e: 'add-customer', customer: Customer): void }>();
+const emit = defineEmits<{ (e: 'add-supplier', supplier: Supplier): void }>();
 
-const customer: Ref<Customer> = ref({
+const supplier: Ref<Supplier> = ref({
   name: '',
-  lastPurchase: new Date(),
+  lastSupplied: new Date(),
   createdAt: new Date(),
-  totalPurchases: 0,
-  totalSpent: 0,
+  totalSupplies: 0,
+  totalSold: 0,
   warehouse: ''
 });
 
 const handleSubmit = (e: any): void => {
   e.preventDefault();
 
-  customerRepository.createCustomer(customer.value).then((data) => {
+  supplierRepository.createSupplier(supplier.value).then((data) => {
     if (data) {
-      emit('add-customer', data);
+      emit('add-supplier', data);
       console.log(data);
     }
   });
@@ -34,21 +34,21 @@ const handleSubmit = (e: any): void => {
 
       <label for="name" class="flex flex-col text-sm font-extrabold text-slate-600 dark:text-slate-400 tracking-wide">
         Name
-        <input id="name" v-model="customer.name"
+        <input id="name" v-model="supplier.name"
           class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 hover:border-gray-500 dark:border-gray-700 focus:border-gray-500 transition-all"
           type="text" placeholder="John Doe" />
       </label>
-      <label for="total-purchases"
+      <label for="total-supplies"
         class="flex flex-col text-sm font-extrabold text-slate-600 dark:text-slate-400 tracking-wide">
-        Total purchases
-        <input id="total-purchases" v-model="customer.totalPurchases"
+        Total supplies
+        <input id="total-supplies" v-model="supplier.totalSupplies"
           class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 hover:border-gray-500 dark:border-gray-700 focus:border-gray-500 transition-all"
           type="number" placeholder="03331234567" />
       </label>
-      <label for="total-spent"
+      <label for="total-sold"
         class="flex flex-col text-sm font-extrabold text-slate-600 dark:text-slate-400 tracking-wide">
-        Total spent
-        <input id="total-spent" v-model="customer.totalSpent"
+        Total sold
+        <input id="total-sold" v-model="supplier.totalSold"
           class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 hover:border-gray-500 dark:border-gray-700 focus:border-gray-500 transition-all"
           type="number" placeholder="03331234567" />
       </label>

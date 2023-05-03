@@ -1,4 +1,4 @@
-export type Customer = {
+export type Supplier = {
     _id?: string;
     name: string;
     lastSupplied: Date;

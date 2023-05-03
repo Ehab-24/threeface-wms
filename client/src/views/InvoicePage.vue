@@ -49,7 +49,9 @@ const chartOptions = {
     <!-- Bar Chart example -->
     <!-- * Use `width` and `height` props to resize the Chart
         * Note: The Chart has fixed aspect ratio -->
-    <Bar id="bar-chart-invoice" :options="chartOptions" :data="chartData" />
+    <div class="h-[780px]">
+        <Bar id="bar-chart-invoice" :options="chartOptions" :data="chartData" />
+    </div>
     
     <div class="h-8"></div>
 
