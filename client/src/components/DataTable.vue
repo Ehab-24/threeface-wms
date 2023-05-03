@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Customer, Invoice, Product } from '@/types';
+import { Customer, Invoice, Product, Supplier } from '@/types';
 
 
 defineEmits<{
@@ -7,13 +7,13 @@ defineEmits<{
 }>();
 defineProps<{
     headers: string[],
-    dataRecords: Invoice[] | Product[] | Customer[],
+    dataRecords: Invoice[] | Product[] | Supplier[] | Customer[],
 }>();
 
 </script>
 
 <template>
-    <div class="relative overflow-x-hidden shadow-md sm:rounded-lg">
+    <div class="w-full relative overflow-x-hidden shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -31,10 +31,13 @@ defineProps<{
             <tbody>
                 <tr v-for="record in dataRecords" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ Object.values(record)[0] }}
+                        {{ Object.values(record)[2] }}
                     </th>
-                    <td v-for="field in Object.values(record).slice(1)" class="px-6 py-4">
+                    <td v-for="field in Object.values(record).slice(3, Object.keys(record).length - 1)" class="px-6 py-4">
                         {{ field }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
                     </td>
                 </tr>
                 <slot name="body"></slot>

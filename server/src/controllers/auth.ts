@@ -23,7 +23,9 @@ export async function login(req: Request, res: Response): Promise<void> {
       return;
     }
     if (!user.isVerified) {
-      res.status(403).json({ success: false, message: 'Email is not verified' });
+      res
+        .status(403)
+        .json({ success: false, message: 'Email is not verified' });
       return;
     }
     if (!bcrypt.compareSync(payload.password, user.password)) {
@@ -77,8 +79,18 @@ export async function register(req: Request, res: Response): Promise<void> {
   try {
     const payload = req.body;
 
-    if (await UserModel.findOne({ email: payload.email })) {
-      res.status(409).json({ success: false, message: 'Email already exists' });
+    const duplicate = await UserModel.findOne({ email: payload.email });
+    if (duplicate && duplicate.isVerified) {
+      if (duplicate.isVerified) {
+        res
+          .status(409)
+          .json({ success: false, message: 'Email already exists' });
+      } else {
+        res.status(409).json({
+          success: false,
+          message: 'Email already exists but is not verified'
+        });
+      }
       return;
     }
 
@@ -126,7 +138,9 @@ export async function sendVerificationCode(
       return;
     }
     if (userDoc.isVerified) {
-      res.status(401).json({ success: false, message: 'Email already verified' });
+      res
+        .status(401)
+        .json({ success: false, message: 'Email already verified' });
       return;
     }
     if (!bcrypt.compareSync(payload.password, userDoc.password)) {
@@ -165,9 +179,6 @@ export async function sendVerificationCode(
 
 export async function verifyCode(req: Request, res: Response): Promise<void> {
   try {
-
-    console.log(req.body)
-
     const {
       email,
       password,
@@ -181,19 +192,25 @@ export async function verifyCode(req: Request, res: Response): Promise<void> {
     const userDoc = await UserModel.findOne({ email: email });
 
     if (userDoc.isVerified) {
-      res.status(409).json({ success: false, message: 'Email already verified'});
+      res
+        .status(409)
+        .json({ success: false, message: 'Email already verified' });
       return;
     }
     if (Date.now() > userDoc.verification.expiry) {
-      res.status(401).json({ success: false, message: 'Verification code expired'});
+      res
+        .status(401)
+        .json({ success: false, message: 'Verification code expired' });
       return;
     }
     if (!code || code !== userDoc.verification.code) {
-      res.status(401).json({ success: false, message: 'Invalid verification code'});
+      res
+        .status(401)
+        .json({ success: false, message: 'Invalid verification code' });
       return;
     }
     if (!bcrypt.compareSync(password, userDoc.password)) {
-      res.status(401).json({ success: false, message: 'Invalid password'});
+      res.status(401).json({ success: false, message: 'Invalid password' });
       return;
     }
 

@@ -2,10 +2,14 @@
 import PageHeader from '../components/PageHeader.vue';
 import DataTable from '../components/DataTable.vue';
 import BigCard from "../components/BigIconCard.vue";
-
+import { Ref, ref } from 'vue';
+import * as supplierRepository from '../repository/app/warehouse/supplier'
 
 import { Pie, Line, PolarArea, Radar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, PointElement, LineElement, RadialLinearScale, ArcElement, CategoryScale, LinearScale } from 'chart.js'
+import { Supplier } from '../types';
+import AddSupplierForm from '../components/AddSupplierForm.vue';
+import Modal from '../components/Modal.vue';
 
 
 // Create a Pie Chart
@@ -30,67 +34,96 @@ const chartOptions = {
     }
   }
 }
- 
+
+// Get Suppliers
+const suppliers: Ref<Supplier[]> = ref([]);
+supplierRepository.getAll(10, 1).then((data) => {
+  if (data) {
+    suppliers.value = data;
+  }
+});
+
+const modalRef: Ref<any | null> = ref(null);
+function openModal(): void {
+  modalRef.value?.openModal();
+}
 
 
 </script>
 
 <template>
   <PageHeader>Suppliers</PageHeader>
+
   <div class="h-4"></div>
 
   <div class="w-full mb-12 grid  grid-flow-row-dense lg:grid-flow-col-dense  place-items-around gap-y-8">
-    <Pie  height="300" width="300" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
-
-    
-
+    <Pie height="300" width="300" id="pie-chart-customer" :options="chartOptions" :data="chartData" />
     <PolarArea id="polararea-chart-customer" height="300" width="300" :options="chartOptions" :data="chartData" />
-
-   
   </div>
 
-<div class="grid grid-flow-row-dense place-content-stretch">
-  <div class="mb-12 w-full grid grid-flow-col-dense  gap-1">
-    
-    <div class="basis-1/4">
-      <BigCard title="Total Suppliers" :value="6700">
-        <template #icon>
-            <svg class="h-8 w-8 text-teal-400"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-</svg>
 
-    </template>
-      </BigCard>
-    </div>
-    <div class="basis-1/4">
-      <BigCard title="Active Suppliers" :value="12">
-        <template #icon>
-            <svg class="h-8 w-8 text-green-400"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="7" cy="17" r="2" />  <circle cx="17" cy="17" r="2" />  <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" /></svg> 
-    </template></BigCard>
-    </div>
+  <div class="grid grid-flow-row-dense place-content-stretch">
+    <div class="mb-12 w-full grid grid-flow-col-dense  gap-1">
 
-    
+      <div class="basis-1/4">
+        <BigCard title="Total Suppliers" :value="6700">
+          <template #icon>
+            <svg class="h-8 w-8 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </template>
+        </BigCard>
+      </div>
+      <div class="basis-1/4">
+        <BigCard title="Active Suppliers" :value="12">
+          <template #icon>
+            <svg class="h-8 w-8 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="8.5" cy="7" r="4" />
+              <polyline points="17 11 19 13 23 9" />
+            </svg>
+          </template>
+        </BigCard>
+      </div>
+
+
+    </div>
+    <div class="mb-12 w-full grid grid-flow-col-dense gap-4">
+      <div class="basis-1/4">
+        <BigCard title="Inactive Suppliers" :value="3"><template #icon>
+            <svg class="h-8 w-8 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="8.5" cy="7" r="4" />
+              <line x1="18" y1="8" x2="23" y2="13" />
+              <line x1="23" y1="8" x2="18" y2="13" />
+            </svg>
+          </template></BigCard>
+      </div>
+      <div class="basis-1/4">
+        <BigCard title="Net Activity" :value="8"><template #icon>
+            <svg class="h-8 w-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+
+          </template></BigCard>
+      </div>
+    </div>
   </div>
-  <div class="mb-12 w-full grid grid-flow-col-dense gap-4">
-    <div class="basis-1/4">
-      <BigCard title="Inactive Suppliers" :value="3"><template #icon>
-        <svg class="h-8 w-8 text-red-400"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="7" cy="17" r="2" />  <circle cx="17" cy="17" r="2" />  <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v6h-5l2 2m0 -4l-2 2" />  <path d="M9 17h6" />  <path d="M13 6h5l3 5v6h-2" /></svg> 
-    </template></BigCard>
-    </div>
-    <div class="basis-1/4">
-      <BigCard title="Net Activity" :value="8"><template #icon>
-        <svg class="h-8 w-8 text-yellow-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />  <polyline points="17 6 23 6 23 12" /></svg>
-  
-    </template></BigCard>
-    </div>
 
-    
+  <div class="mt-4 grid grid-flow-row-dense w-full">
+    <DataTable @click="openModal"
+      :headers="['name', 'Last Supply', 'Total Supplies', 'total Sold', 'created at']"
+      :data-records="suppliers" />
   </div>
- 
-</div>
-  <div class="mt-4 grid grid-flow-row-dense  w-max">
-  <DataTable @click="" :headers="['id','name','lastSupplied','createdAt','totalSupplies','totalSold','warehouse' ]" :data-records="[]" />
-</div>
-  
 
+  <Modal ref="modalRef">
+    <AddSupplierForm @add-supplier="(supplier: Supplier) => suppliers.push(supplier)" />
+  </Modal>
 </template>

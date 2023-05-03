@@ -46,17 +46,14 @@ const chartOptions = {
 <template>
     <PageHeader>Invoice</PageHeader>
 
-
-    <div class="mt-4 grid grid-flow-row place-content-center w-max">
-
-    
-    <div class="w-[800px] h-[400px]  bg-teal-300 bg-opacity-20 rounded-xl">
+    <!-- Bar Chart example -->
+    <!-- * Use `width` and `height` props to resize the Chart
+        * Note: The Chart has fixed aspect ratio -->
+    <div class="h-[780px]">
         <Bar id="bar-chart-invoice" :options="chartOptions" :data="chartData" />
     </div>
-
+    
     <div class="h-8"></div>
 
-
     <data-table @click="addInvoice" :data-records="invoices" :headers="['id', 'customer', 'num products', 'created at']" />
-    </div>
 </template>

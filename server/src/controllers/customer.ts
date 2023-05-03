@@ -3,6 +3,7 @@ import { UserRequest } from '../interfaces';
 import { CustomerModel } from '../models';
 import { Customer, PageInfo } from '../types';
 import { extendPipeline, getPageInfo } from '../shared/utils';
+import mongoose from 'mongoose';
 
 // **************************************************************
 // * CRUD for customers of the currently logged in user
@@ -19,7 +20,11 @@ export async function readAll(req: UserRequest, res: Response): Promise<void> {
       return;
     }
 
-    const pipeline = [{ $match: { warehouse: req.user.warehouse } }];
+    const pipeline = [
+      {
+        $match: { warehouse: new mongoose.Types.ObjectId(req.user.warehouse) }
+      }
+    ];
     const { limit, page }: { limit: number; page: number } = extendPipeline(
       pipeline,
       req

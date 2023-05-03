@@ -31,11 +31,6 @@ export default [
         component: () => import('../components/AddProduct.vue')
       },
       {
-        path: '/add-customer',
-        name: 'add-customer',
-        component: () => import('../components/AddCustomer.vue')
-      },
-      {
         path: '/customers',
         name: 'customers',
         component: () => import('../views/CustomersPage.vue')

@@ -11,13 +11,14 @@ export async function getCustomer(id: string): Promise<Customer | null> {
     }
 }
 
-export async function getAll(): Promise<Customer[] | null> {
+export async function getAll(limit: number, page: number): Promise<Customer[] | null> {
     try {
-        const {data} = await appAPI.get('/warehouse/customer');
+        const {data} = await appAPI.get('/warehouse/customer', {params: {limit, page}});
         return data.data as Customer[];
     }
     catch (error: any) {
         alert(error.response.data?.message ?? error.message);
+        console.warn(error);
         return null;
     }
 }
